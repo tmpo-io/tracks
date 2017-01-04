@@ -57,7 +57,20 @@ describe('tracks', () => {
   });
 
 
+  it('should handle tracking numbers', () => {
+    let s = reducerTracks(state, actions.addTrack({
+      kind: 'counter'
+    }));
+    expect(s.tracks.length).toBe(1);
+    let track = s.tracksEntities[s.tracks[0]];
+    s = reducerTracks(s, actions.trackCount(track.id));
+    track = s.tracksEntities[s.tracks[0]];
+    expect(track.amount).toBe(1);
+    s = reducerTracks(s, actions.trackCount(track.id));
+    track = s.tracksEntities[s.tracks[0]];
+    expect(track.amount).toBe(2);
 
+  });
 
 
 });

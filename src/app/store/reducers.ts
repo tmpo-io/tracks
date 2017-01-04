@@ -20,19 +20,19 @@ const defaultTrack = (counter) => ({
   lastRecord: 0,
 });
 
-const assign = Object.assign;
-
+const cl = (obj: any, props: any) => Object.assign({}, obj, props);
 
 export function reducerTracks(state = initialState, action: Action): State {
+  let lastRecord = (new Date()).getTime();
 
   switch (action.type) {
     case actions.TRACK_ADD: {
-      let track = assign(
+      let track = cl(
         defaultTrack(state.counter), action.payload
       );
-      return assign({}, state, {
+      return cl(state, {
         tracks: [...state.tracks, track.id],
-        tracksEntities: assign({}, state.tracksEntities, {
+        tracksEntities: cl(state.tracksEntities, {
           [track.id]: track
         }),
         counter: state.counter++
@@ -40,53 +40,41 @@ export function reducerTracks(state = initialState, action: Action): State {
     }
 
     case actions.TRACK_START: {
-
-      let time = (new Date()).getTime();
       let track = state.tracksEntities[action.payload];
-      let log = logTrack(time, track.id, 'recording');
-      let newTrack = setTrackStart(track, time);
-      return assign({}, state, {
-        tracksEntities: assign({}, state.tracksEntities, {
-          [action.payload]: newTrack
-        }),
-        logs: [...state.logs, log.id],
-        logsEntities: assign({}, state.logsEntities, {
-          [log.id]: log
-        })
-      });
+      return newState(
+        state,
+        cl(track, { lastRecord, state: 'recording' }),
+        logTrack(lastRecord, track.id, 'recording')
+      );
     }
 
     case actions.TRACK_STOP: {
       let track = state.tracksEntities[action.payload];
-      let time = (new Date()).getTime();
-      let newTrack = assign({}, track, {
-        state: 'stopped',
-        amount: track.amount + (time - track.lastRecord),
-        lastRecord: time
-      });
-      let log = logTrack(time, action.payload, 'stop', newTrack.amount);
-      return assign({}, state, {
-        tracksEntities: assign({}, state.tracksEntities, {
-          [action.payload]: newTrack
-        }),
-        logs: [...state.logs, log.id],
-        logsEntities: assign({}, state.logsEntities, {
-          [log.id]: log
-        })
-      });
+      let amount = track.amount + (lastRecord - track.lastRecord);
+      return newState(
+        state,
+        cl(track, { state: 'stopped', amount, lastRecord}),
+        logTrack(lastRecord, track.id, 'stop', amount)
+      );
     }
+
     case actions.TRACK_COUNT: {
       let track = state.tracksEntities[action.payload];
-      //let newTrack = assign({})
-
+      let amount = track.amount + 1;
+      return newState(
+        state,
+        cl(track, {lastRecord, amount}),
+        logTrack(lastRecord, track.id, 'track', amount)
+      );
     }
-
   }
   return state;
 }
 
+
 function logTrack(
-  time: number, trackId: string, action: LogAction, amount = 0): TrackLog {
+  time: number, trackId: string,
+  action: LogAction, amount = 0): TrackLog {
     return {
       id: getId(),
       action,
@@ -97,7 +85,17 @@ function logTrack(
 }
 
 
-function setTrackStart(track: Track, lastRecord: number): Track {
-  let state = 'recording';
-  return assign({}, track, { lastRecord, state });
+// Computes a new state given a mutated track object, an a new log event
+// for the mutation
+function newState(state: State, track: Track, log: TrackLog): State {
+  return Object.assign({}, state, {
+    tracksEntities: Object.assign({}, state.tracksEntities, {
+      [track.id]: track
+    }),
+    logs: [...state.logs, log.id],
+    logsEntities: Object.assign({}, state.logsEntities, {
+      [log.id]: log
+    }),
+  });
 }
+
