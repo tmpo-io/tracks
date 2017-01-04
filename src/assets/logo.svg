@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 111 111" enable-background="new 0 0 111 111" xml:space="preserve">
+<g>
+	<ellipse fill="#45AAB5" cx="53.7" cy="59.3" rx="48.3" ry="47.1"/>
+	<g>
+		<circle fill="#B3E1E7" cx="52.9" cy="55" r="43.8"/>
+		<path fill="#245479" d="M52.9,102.6C26.7,102.6,5.3,81.3,5.3,55S26.7,7.4,52.9,7.4s47.6,21.3,47.6,47.6S79.2,102.6,52.9,102.6z
+			 M52.9,15c-22.1,0-40,18-40,40c0,22.1,18,40,40,40s40-18,40-40C93,32.9,75,15,52.9,15z"/>
+	</g>
+	<rect x="48.7" y="10" fill="#245479" width="7.5" height="11.5"/>
+	<rect x="48.7" y="88" fill="#245479" width="7.5" height="11.5"/>
+	<rect x="85.4" y="52" fill="#245479" width="11.5" height="7.5"/>
+	<rect x="8.5" y="52" fill="#245479" width="11.5" height="7.5"/>
+	<circle fill="#245479" cx="52.9" cy="55.8" r="5.9"/>
+	<rect x="51.3" y="28.8" fill="#245479" width="3.2" height="37.7"/>
+	
+		<rect x="86" y="17.6" transform="matrix(0.7071 0.7071 -0.7071 0.7071 41.3067 -57.2329)" fill="#245479" width="7.5" height="7.4"/>
+	
+		<rect x="87" y="14.1" transform="matrix(0.7071 0.7071 -0.7071 0.7071 39.8992 -60.5514)" fill="#245479" width="12.2" height="7.5"/>
+</g>
+</svg>
