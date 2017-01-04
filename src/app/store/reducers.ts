@@ -75,6 +75,11 @@ export function reducerTracks(state = initialState, action: Action): State {
         })
       });
     }
+    case actions.TRACK_COUNT: {
+      let track = state.tracksEntities[action.payload];
+      //let newTrack = assign({})
+
+    }
 
   }
   return state;
