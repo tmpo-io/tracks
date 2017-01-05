@@ -1,26 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component, Input, OnInit,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import {State} from '../store/model';
+import { Track } from '../store/model';
 
 
 @Component({
   selector: 'app-page-home',
   templateUrl: './home.component.html',
-  styles: ['']
+  styles: [''],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageHomeComponent implements OnInit {
+export class PageHomeComponent  {
 
-  @Input() state: State;
+  @Input() tracks: Track[] = [];
 
   showAdd: false;
 
-  constructor(public store: Store<State>) { }
+  constructor(public store: Store<any>) { }
 
-  ngOnInit() {
-    console.log(this.state);
-  }
 
   addTrack(event) {
     this.store.dispatch({
@@ -30,8 +31,5 @@ export class PageHomeComponent implements OnInit {
     this.showAdd = false;
   }
 
-  getTrack(trackId: string) {
-    return this.state.tracksEntities[trackId];
-  }
 
 }

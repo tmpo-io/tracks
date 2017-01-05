@@ -36,8 +36,10 @@ export interface AppState {
 
 export const initialState: State = {
   counter: 1,
-  tracks: [],
-  tracksEntities: {},
+  tracks: ['1483615670068-2'],
+  tracksEntities: {
+    "1483615670068-2": { "id": "1483615670068-2", "kind": "time", "desc": "qwer", "state": "stopped", "amount": 0, "lastRecord": 0 }
+  },
   logs: [],
   logsEntities: {}
 };

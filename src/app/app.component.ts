@@ -3,6 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { State } from './store/model';
+import 'rxjs/add/operator/map';
+
+import { Track } from './store/model';
 
 
 @Component({
@@ -12,12 +15,17 @@ import { State } from './store/model';
 })
 export class AppComponent {
 
-  state$: Observable<State>;
+  tracks$: Observable<Track[]>;
 
 
   constructor(public store: Store<State>) {
 
-    this.state$ = store.select('data');
+    this.tracks$ = store
+      .select('data')
+      .map((state: State) => state.tracks
+        .map(id => state.tracksEntities[id])
+        .reverse()
+      );
 
   }
 

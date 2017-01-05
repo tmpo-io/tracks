@@ -9,7 +9,7 @@
     (add)="addTrack($event)"
     ></app-add-track>
 
-  <div class="card intro" *ngIf="state.tracks.length == 0">
+  <div class="card intro" *ngIf="tracks.length == 0">
     <img src="assets/logo.svg" height="80" />
     <h2>START TRACKING</h2>
     <hr />
@@ -24,8 +24,8 @@
   </div>
 
   <div class="card"
-    *ngFor="let trackID of state.tracks">
-    {{ getTrack(trackID) | json }}
+    *ngFor="let track of tracks">
+    {{ track | json }}
   </div>
 
 
