@@ -85,8 +85,7 @@ function logTrack(
 }
 
 
-// Computes a new state given a mutated track object, an a new log event
-// for the mutation
+// Computes a new state
 function newState(state: State, track: Track, log: TrackLog): State {
   return Object.assign({}, state, {
     tracksEntities: Object.assign({}, state.tracksEntities, {

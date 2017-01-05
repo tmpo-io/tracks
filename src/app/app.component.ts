@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { State } from './store/model';
 
@@ -11,9 +12,15 @@ import { State } from './store/model';
 })
 export class AppComponent {
 
-  title = 'app works!';
+  state$: Observable<State>;
 
-  constructor(public store: Store<State>) { }
+
+  constructor(public store: Store<State>) {
+
+    this.state$ = store.select('data');
+
+  }
+
 
 
 }

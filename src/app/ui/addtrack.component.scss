@@ -1,0 +1,86 @@
+:host {
+  box-sizing: border-box;
+  position: relative;
+  height: 173px;
+  box-shadow: 3px 3px 9px 4px rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1)
+}
+
+
+div.close {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+h2 {
+  font-weight: bolder;
+  font-size: 1em;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+button {
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bolder;
+  border-radius: 5px;
+  background-color: #1695a3;
+  color: #fff;
+  padding: 8px 25px 8px 25px;
+  font-size: 1em;
+}
+
+
+input {
+  box-sizing: border-box;
+  padding: 5px 0px;
+  border: 0px;
+  border-bottom: 2px solid #1695a3;
+  width: 90%;
+  position: absolute;
+  left: 20px;
+  top: 55px;
+  transition: all 0.5s ease-in-out;
+
+  &:focus {
+    outline-width: 0;
+    border-bottom: 2px solid #225378;
+  }
+
+}
+
+
+.kind {
+
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  .ele {
+    opacity: 0.3;
+    font-size: 0.8em;
+    width: 62px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: bottom;
+
+    img {
+      width: 60%;
+    }
+
+    &.enabled {
+      opacity: 1;
+    }
+
+  }
+
+
+}
+

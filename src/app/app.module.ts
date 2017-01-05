@@ -6,7 +6,9 @@ import { HttpModule } from '@angular/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TracksStoreModule } from './store/store.module';
 
-import { UIModule } from './ui/ui.module';
+// import { UIModule } from './ui/ui.module';
+import { PagesModule } from './pages/pages.module';
+
 
 import { AppComponent } from './app.component';
 
@@ -16,11 +18,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    // FormsModule,
     // HttpModule,
     TracksStoreModule,
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    UIModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

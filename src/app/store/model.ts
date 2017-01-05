@@ -1,15 +1,17 @@
 
+export type TrackType = 'time' | 'counter';
+export type LogAction = 'recording' | 'stop' | 'track';
+
 
 export interface Track {
   id: string;
   lastRecord: number;
-  kind: 'time' | 'counter';
+  kind: TrackType;
   desc?: string;
   amount: number;
   state?: 'stopped' | 'recording';
 }
 
-export type LogAction = 'recording' | 'stop' | 'track';
 
 export interface TrackLog {
   trackId: string;
@@ -26,6 +28,10 @@ export interface State {
   tracksEntities: { [id: string]: Track };
   logs: string[];
   logsEntities: {[id: string]: TrackLog };
+}
+
+export interface AppState {
+  data: State;
 }
 
 export const initialState: State = {

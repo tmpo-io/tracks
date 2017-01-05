@@ -34,8 +34,9 @@ h1,h2,h3,h4 {
 
 app-fab {
   position: fixed;
-  bottom: 5%;
+  bottom: 3%;
   right: 5%;
+  z-index: 10;
 }
 
 
@@ -65,10 +66,12 @@ hr {
   border-radius: 15px;
   background-color: #fff;
   padding: 20px;
+  margin-bottom: 10px;
 
   &.intro {
     width: 90%;
     text-align:center;
+    margin-top: 20px;
   }
 
 }

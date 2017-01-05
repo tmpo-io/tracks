@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="wrap fb">
+
+  <app-add-track
+    *ngIf="showAdd"
+    class="card"
+    (dismiss)="showAdd=false"
+    (add)="addTrack($event)"
+    ></app-add-track>
+
+  <div class="card intro" *ngIf="state.tracks.length == 0">
+    <img src="assets/logo.svg" height="80" />
+    <h2>START TRACKING</h2>
+    <hr />
+    <div class="item">
+      <img src="assets/timer.svg" width="50" />
+      <p>Track time spent doing things</p>
+    </div>
+    <div class="item">
+      <img src="assets/counter.svg" width="50" />
+      <p>Count events</p>
+    </div>
+  </div>
+
+  <div class="card"
+    *ngFor="let trackID of state.tracks">
+    {{ getTrack(trackID) | json }}
+  </div>
+
+
+</div>
+
+<app-fab background="#fff"
+  (click)="showAdd=true">
+    <img src="assets/plus.svg" width="20" />
+</app-fab>
+

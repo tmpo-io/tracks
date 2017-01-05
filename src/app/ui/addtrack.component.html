@@ -1,0 +1,27 @@
+
+<div class="close" (click)="dismiss.next(true)">
+  <img src="assets/close.svg" />
+</div>
+
+<h2>ADD A NEW TRACK</h2>
+
+<input name="desc" type="text" #form
+  placeholder="Add your track title"  />
+
+<div class="kind">
+  <div class="ele"
+    (click)="kind='counter'"
+    [ngClass]="{enabled: kind=='counter'}">
+    <img src="assets/counter.svg" />
+    <label>Counter</label>
+  </div>
+  <div class="ele"
+    (click)="kind='time'"
+    [ngClass]="{enabled: kind=='time'}">
+    <img src="assets/timer.svg" />
+    <label>Timer</label>
+  </div>
+</div>
+
+
+<button (click)="submit()">ADD</button>
