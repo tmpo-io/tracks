@@ -5,11 +5,16 @@ import { CommonModule} from '@angular/common';
 import { AppHeaderComponent } from './header.component';
 import { FabComponent } from './fab.component';
 import { AppAddTrackComponent } from './addtrack.component';
+import { AppTrackTimeComponent } from './tracktime.component';
+import { TimeSincePipe } from './time.pipe';
+
 
 const COMPONENTS = [
     AppHeaderComponent,
     FabComponent,
-    AppAddTrackComponent
+    AppAddTrackComponent,
+    AppTrackTimeComponent,
+    TimeSincePipe
   ];
 
 
