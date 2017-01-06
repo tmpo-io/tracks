@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  height: 145px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+h3 {
+  position: absolute;
+  margin-top: 0px;
+  text-transform: uppercase;
+  color: #225378;
+}
+
+app-track-clock {
+
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+
+  font-size: 40px;
+
+}

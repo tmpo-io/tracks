@@ -1,0 +1,10 @@
+
+<span class="icon">
+  <img src="assets/timer.svg" />
+</span>
+
+<h3>{{ track.desc }}</h3>
+
+<app-track-clock
+  [time]="track.amount"
+  [state]="'record'"></app-track-clock>
