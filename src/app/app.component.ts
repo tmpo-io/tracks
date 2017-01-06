@@ -6,7 +6,7 @@ import { State } from './store/model';
 import 'rxjs/add/operator/map';
 
 import { Track } from './store/model';
-
+import * as actions from './store/actions';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +17,9 @@ export class AppComponent {
 
   tracks$: Observable<Track[]>;
 
-
   constructor(public store: Store<State>) {
+
+    store.dispatch({type: actions.LOAD_STORE});
 
     this.tracks$ = store
       .select('data')

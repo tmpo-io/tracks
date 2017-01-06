@@ -4,6 +4,7 @@ import {
   TrackLog, LogAction
 } from './model';
 import * as actions from './actions';
+import { loadStore } from './storage';
 
 let id = 0;
 
@@ -26,6 +27,9 @@ export function reducerTracks(state = initialState, action: Action): State {
   let lastRecord = (new Date()).getTime();
 
   switch (action.type) {
+    case actions.LOAD_STORE: {
+      return loadStore();
+    }
     case actions.TRACK_ADD: {
       let track = cl(
         defaultTrack(state.counter), action.payload

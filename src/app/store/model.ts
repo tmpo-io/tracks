@@ -34,14 +34,20 @@ export interface AppState {
   data: State;
 }
 
+// export const initialState: State = {
+//   counter: 1,
+//   tracks: ['1483615670068-2'],
+//   tracksEntities: {
+//     "1483615670068-2": { "id": "1483615670068-2", "kind": "time", "desc": "qwer", "state": "stopped", "amount": 0, "lastRecord": 0 }
+//   },
+//   logs: [],
+//   logsEntities: {}
+// };
+
 export const initialState: State = {
   counter: 1,
-  tracks: ['1483615670068-2'],
-  tracksEntities: {
-    "1483615670068-2": { "id": "1483615670068-2", "kind": "time", "desc": "qwer", "state": "stopped", "amount": 0, "lastRecord": 0 }
-  },
+  tracks: [],
+  tracksEntities: {},
   logs: [],
   logsEntities: {}
 };
-
-
