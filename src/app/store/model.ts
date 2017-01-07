@@ -3,7 +3,7 @@ export type TrackType = 'time' | 'counter';
 export type LogAction = 'recording' | 'stop' | 'track';
 
 
-export interface Track {
+export class Track {
   id: string;
   lastRecord: number;
   kind: TrackType;

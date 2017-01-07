@@ -7,4 +7,17 @@
 
 <app-track-clock
   [time]="track.amount"
-  [state]="'record'"></app-track-clock>
+  [state]="track.state"
+  [last]="track.lastRecord"></app-track-clock>
+
+<div class="record">
+  <app-record-button
+    [state]="track.state"
+    (click)="trackTime($event)"
+    [colors]="{stopped: '#1695a3', recording: '#225378'}"
+    ></app-record-button>
+</div>
+<p class="record-start">
+  <span *ngIf="track.state=='stopped'">Start</span>
+  <span *ngIf="track.state=='recording'">Stop</span>
+</p>

@@ -31,5 +31,8 @@ export class PageHomeComponent  {
     this.showAdd = false;
   }
 
+  // byId(item) {
+  //   return item.id;
+  // }
 
 }

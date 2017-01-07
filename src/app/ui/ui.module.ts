@@ -7,6 +7,7 @@ import { FabComponent } from './fab.component';
 import { AppAddTrackComponent } from './addtrack.component';
 import { AppTrackTimeComponent } from './tracktime.component';
 import { AppTrackClockComponent } from './trackclock.component';
+import { AppRecordButtonComponent } from './recordbtn.component';
 import { TimeSincePipe } from './time.pipe';
 
 
@@ -16,7 +17,8 @@ const COMPONENTS = [
     AppAddTrackComponent,
     AppTrackTimeComponent,
     AppTrackClockComponent,
-    TimeSincePipe
+    AppRecordButtonComponent,
+    TimeSincePipe,
   ];
 
 

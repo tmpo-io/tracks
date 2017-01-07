@@ -6,8 +6,11 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/observable/timer';
 
+
+const current = () => (new Date).getTime();
 
 @Component({
   selector: 'app-track-clock',
@@ -22,17 +25,21 @@ export class AppTrackClockComponent implements OnDestroy {
   time: number;
 
   @Input()
+  last: number;
+
+  @Input()
   set state(state: string) {
     if (state === 'stopped') {
       this.time$ =
         Observable.of(this.time)
-        .takeUntil(this.destroy$);
+          .takeUntil(this.destroy$);
       return;
     }
     this.time$ = Observable
-      .interval(1000)
+      .timer(0, 1000)
+      .startWith(1)
       .takeUntil(this.destroy$)
-      .map(m => this.time + (m * 1000));
+      .map(m => (this.time + (current() - this.last)));
   }
 
   ngOnDestroy() {

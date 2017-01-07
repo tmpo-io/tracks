@@ -25,7 +25,10 @@
 
   <div class="card"
     *ngFor="let track of tracks">
-    {{ track | json }}
+    <app-track-time [track]="track"
+      *ngIf="track.kind == 'time'"></app-track-time>
+
+    <span *ngIf="track.kind == 'counter'">{{ track | json }}</span>
   </div>
 
 

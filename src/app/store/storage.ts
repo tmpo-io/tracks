@@ -8,8 +8,8 @@ import { State, initialState } from './model';
 import * as actions from './actions';
 
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/take';
 import 'rxjs/add/observable/of';
-
 
 const STORE_KEY = 'tracks';
 
@@ -38,8 +38,6 @@ export function loadStore(): State {
 }
 
 
-
-
 @Injectable()
 export class Storage {
 
@@ -51,16 +49,15 @@ export class Storage {
     )
     .switchMap(act => {
       return this.store
-        .select('data')
+        .select(store => store.data)
         .map(d => {
           this.save(d as State);
           return Observable.of(1);
-        });
+        }).take(1);
     });
 
 
   constructor(private actions$: Actions, private store: Store<any>) { }
-
 
   save(appState: State) {
     console.log('save');
