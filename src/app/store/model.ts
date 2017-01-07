@@ -10,6 +10,7 @@ export class Track {
   desc?: string;
   amount: number;
   state?: 'stopped' | 'recording';
+  today?: number;
 }
 
 

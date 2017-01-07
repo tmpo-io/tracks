@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { Track } from './store/model';
 import * as actions from './store/actions';
+import { getTimeToday } from './store/reducers';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,9 @@ export class AppComponent {
       .select('data')
       .map((state: State) => state.tracks
         .map(id => state.tracksEntities[id])
+        .map(obj => Object.assign({}, obj, {
+          today: getTimeToday(state.logsEntities, obj)
+        }))
         .reverse()
       );
 

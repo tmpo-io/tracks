@@ -14,7 +14,7 @@ const current = () => (new Date).getTime();
 
 @Component({
   selector: 'app-track-clock',
-  template: `{{ (time$ | async) | timesince }}`
+  template: `<ng-content></ng-content>{{ (time$ | async) | timesince }}`
 })
 export class AppTrackClockComponent implements OnDestroy {
 

@@ -13,11 +13,16 @@
 <div class="record">
   <app-record-button
     [state]="track.state"
-    (click)="trackTime($event)"
-    [colors]="{stopped: '#1695a3', recording: '#225378'}"
+    (select)="trackTime($event)"
+    [colors]="{stopped: '#1695a3', recording: '#f15a24'}"
     ></app-record-button>
 </div>
 <p class="record-start">
   <span *ngIf="track.state=='stopped'">Start</span>
   <span *ngIf="track.state=='recording'">Stop</span>
 </p>
+
+<app-track-clock class="today"
+  [time]="track.today"
+  [state]="track.state"
+  [last]="track.lastRecord"><span>TODAY: </span></app-track-clock>

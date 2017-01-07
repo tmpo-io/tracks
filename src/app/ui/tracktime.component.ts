@@ -23,6 +23,7 @@ export class AppTrackTimeComponent {
     } else {
       this.store.dispatch(actions.trackStart(this.track.id));
     }
+    return false;
   }
 
 }

@@ -24,7 +24,7 @@
   </div>
 
   <div class="card"
-    *ngFor="let track of tracks">
+    *ngFor="let track of tracks; trackBy:byObj">
     <app-track-time [track]="track"
       *ngIf="track.kind == 'time'"></app-track-time>
 

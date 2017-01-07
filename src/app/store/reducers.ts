@@ -12,6 +12,18 @@ export function getId(): string {
   return (new Date()).getTime() + '-' + ++id;
 }
 
+export const today = () =>
+  (new Date()).setHours(0, 0, 0, 0);
+
+export const getTimeToday = (logsEntities, track) =>
+  {
+    return Object.keys(logsEntities)
+      .map(obj => logsEntities[obj])
+      .filter(el => el.time >= today() && el.trackId === track.id && el.action === 'stop')
+      .reduce((a, b) => a + b.amount, 0);
+  };
+
+
 const defaultTrack = (counter) => ({
   id: getId(),
   kind: 'time',
@@ -57,8 +69,8 @@ export function reducerTracks(state = initialState, action: Action): State {
       let amount = track.amount + (lastRecord - track.lastRecord);
       return newState(
         state,
-        cl(track, { state: 'stopped', amount, lastRecord}),
-        logTrack(lastRecord, track.id, 'stop', amount)
+        cl(track, { state: 'stopped', amount, lastRecord }),
+        logTrack(lastRecord, track.id, 'stop', (lastRecord - track.lastRecord))
       );
     }
 
@@ -67,7 +79,7 @@ export function reducerTracks(state = initialState, action: Action): State {
       let amount = track.amount + 1;
       return newState(
         state,
-        cl(track, {lastRecord, amount}),
+        cl(track, { lastRecord, amount }),
         logTrack(lastRecord, track.id, 'track', amount)
       );
     }
@@ -79,13 +91,13 @@ export function reducerTracks(state = initialState, action: Action): State {
 function logTrack(
   time: number, trackId: string,
   action: LogAction, amount = 0): TrackLog {
-    return {
-      id: getId(),
-      action,
-      trackId,
-      time,
-      amount
-    };
+  return {
+    id: getId(),
+    action,
+    trackId,
+    time,
+    amount
+  };
 }
 
 

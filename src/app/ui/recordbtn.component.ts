@@ -41,14 +41,14 @@ export interface ColorState {
         'border-radius': '50%',
         transform: 'scale(1, 1)'
       })),
-      transition('recording <=> stopped', animate('0.8s cubic-bezier(0.25, 0.1, 0.25, 1)')),
+      transition('recording <=> stopped', animate('0.6s cubic-bezier(0.25, 0.1, 0.25, 1)')),
     ])
   ]
 })
 export class AppRecordButtonComponent {
 
   @Output()
-  click = new EventEmitter<string>();
+  select = new EventEmitter<string>();
 
   @Input()
   state: 'stopped' | 'recording' = 'stopped';
@@ -64,7 +64,7 @@ export class AppRecordButtonComponent {
       this.state = 'recording';
     }
 
-    this.click.next(this.state);
+    this.select.next(this.state);
   }
 
   get color(): string {

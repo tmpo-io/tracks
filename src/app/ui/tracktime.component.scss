@@ -27,14 +27,21 @@ app-track-clock {
   right: 0px;
   font-size: 40px;
   color: #225378;
+
+  &.today {
+    font-size: 1em;
+    top: 85px;
+    color: #1695a3;
+  }
+
 }
 
 .record {
 
   position: absolute;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   top: 28px;
   left: 0px;
   background-color: #acf0f2;
@@ -45,17 +52,19 @@ app-track-clock {
 
   app-record-button {
     display: block;
-    width: 45%;
-    height: 45%;
+    width: 50%;
+    height: 50%;
   }
 
 }
 
 .record-start {
-  width: 70px;
+  width: 60px;
   text-align:center;
   position: absolute;
-  top: 88px;
+  top: 75px;
   left: 0px;
   font-size: 0.8em;
 }
+
+
