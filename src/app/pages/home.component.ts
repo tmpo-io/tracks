@@ -11,7 +11,6 @@ import { Track } from '../store/model';
 @Component({
   selector: 'app-page-home',
   templateUrl: './home.component.html',
-  styles: [''],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageHomeComponent  {
@@ -21,7 +20,6 @@ export class PageHomeComponent  {
   showAdd: false;
 
   constructor(public store: Store<any>) { }
-
 
   addTrack(event) {
     this.store.dispatch({
@@ -34,8 +32,5 @@ export class PageHomeComponent  {
   byObj(item) {
     return item.id;
   }
-  // byId(item) {
-  //   return item.id;
-  // }
 
 }

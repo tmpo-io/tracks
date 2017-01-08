@@ -62,7 +62,6 @@ hr {
 }
 
 /* Base for card */
-
 .card {
 
   display: block;
@@ -102,6 +101,51 @@ hr {
 }
 
 /* Card item */
+.full {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.card_ct {
+  @extend .card;
+  overflow: hidden;
+  background-color: $initial;
+  padding: 0;
+  position: relative;
+  height: 125px;
+  z-index: 50;
+}
+
+.card_main {
+  border-radius: 15px;
+  @extend .full;
+  z-index: 10;
+  transform: translate3d(0, 0, 0);
+  background-color: $white;
+  padding: 10px 20px 10px 20px;
+}
+
+.card_down {
+  @extend .full;
+  z-index: 9;
+
+  &.delete {
+    background-color: red;
+    color: #fff;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+  }
+
+}
+
+
+
 
 app-track-time, app-track-counter {
   display: block;
