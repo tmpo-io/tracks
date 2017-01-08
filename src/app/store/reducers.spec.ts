@@ -35,24 +35,27 @@ describe('tracks', () => {
 
 
   it('should handle tracking time', () => {
+
     let ti = (new Date()).valueOf();
     let s = reducerTracks(state, actions.addTrack({}));
     expect(s.tracks.length).toBe(1);
     let track = s.tracksEntities[s.tracks[0]];
-    s = reducerTracks(s, actions.trackStart(track.id));
+
+    let now = actions.now() - 60 * 1000;
+    s = reducerTracks(s, actions.trackStart(track.id, now));
     expect(s.logs.length).toBe(1);
     track = s.tracksEntities[track.id];
-    expect(track.lastRecord).toBeGreaterThanOrEqual(ti);
+    expect(track.lastRecord).toBe(now);
     expect(track.state).toBe('recording');
 
-    s.tracksEntities[track.id].lastRecord -= 100;
-    s = reducerTracks(s, actions.trackStop(track.id));
+    // s.tracksEntities[track.id].lastRecord -= 100;
+    s = reducerTracks(s, actions.trackStop(track.id, now + 60000);
     expect(s.logs.length).toBe(2);
-    // expect(s.tracksEntities[track.id].amount).toBe(100);
+    expect(s.tracksEntities[track.id].amount).toBe(60000);
 
     expect(s.logsEntities[s.logs[0]].action).toBe('recording');
     expect(s.logsEntities[s.logs[1]].action).toBe('stop');
-    // expect(s.logsEntities[s.logs[1]].amount).toBe(100);
+    expect(s.logsEntities[s.logs[1]].amount).toBe(60000);
 
   });
 

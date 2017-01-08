@@ -36,7 +36,7 @@ const defaultTrack = (counter) => ({
 const cl = (obj: any, props: any) => Object.assign({}, obj, props);
 
 export function reducerTracks(state = initialState, action: Action): State {
-  let lastRecord = (new Date()).getTime();
+  // let lastRecord = (new Date()).getTime();
 
   switch (action.type) {
     case actions.LOAD_STORE: {
@@ -56,7 +56,8 @@ export function reducerTracks(state = initialState, action: Action): State {
     }
 
     case actions.TRACK_START: {
-      let track = state.tracksEntities[action.payload];
+      let lastRecord = action.payload.time;
+      let track = state.tracksEntities[action.payload.id];
       return newState(
         state,
         cl(track, { lastRecord, state: 'recording' }),
@@ -65,7 +66,8 @@ export function reducerTracks(state = initialState, action: Action): State {
     }
 
     case actions.TRACK_STOP: {
-      let track = state.tracksEntities[action.payload];
+      let lastRecord = action.payload.time;
+      let track = state.tracksEntities[action.payload.id];
       let amount = track.amount + (lastRecord - track.lastRecord);
       return newState(
         state,
@@ -75,7 +77,8 @@ export function reducerTracks(state = initialState, action: Action): State {
     }
 
     case actions.TRACK_COUNT: {
-      let track = state.tracksEntities[action.payload];
+      let lastRecord = action.payload.time;
+      let track = state.tracksEntities[action.payload.id];
       let amount = track.amount + 1;
       return newState(
         state,

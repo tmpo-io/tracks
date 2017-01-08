@@ -8,6 +8,7 @@ export const TRACK_STOP = 'TRACK_STOP';
 export const TRACK_COUNT = 'TRACK_COUNT';
 export const LOAD_STORE = 'LOAD_STORE';
 
+export const now = () => (new Date()).getTime();
 
 export function addTrack(p: any): Action {
   return {
@@ -16,25 +17,34 @@ export function addTrack(p: any): Action {
   };
 }
 
-export function trackStart(id: string): Action {
+export function trackStart(id: string, time = now()): Action {
   return {
     type: TRACK_START,
-    payload: id
+    payload: {
+      id: id,
+      time: time
+    }
   };
 }
 
-export function trackStop(id: string): Action {
+export function trackStop(id: string, time = now()): Action {
   return {
     type: TRACK_STOP,
-    payload: id
+    payload: {
+      id: id,
+      time: time
+    }
   };
 }
 
 
-export function trackCount(id: string): Action {
+export function trackCount(id: string, time = now()): Action {
   return {
     type: TRACK_COUNT,
-    payload: id
+    payload: {
+      id: id,
+      time: time
+    }
   };
 }
 
