@@ -95,3 +95,74 @@ hr {
   }
 
 }
+
+/* Card item */
+
+app-track-time, app-track-counter {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  height: 105px;
+}
+
+.card_icon {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+
+h3.card_title {
+  position: absolute;
+  margin-top: 0px;
+  text-transform: uppercase;
+  color: #225378;
+}
+
+.record {
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  top: 28px;
+  left: 0px;
+  background-color: #acf0f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .btn {
+    display: block;
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.amount {
+
+  position: absolute;
+  top: 38px;
+  right: 0px;
+  font-size: 40px;
+  color: #225378;
+
+  &.today {
+    font-size: 1em;
+    top: 85px;
+    color: #1695a3;
+    right: 2px;
+  }
+
+}
+
+.record-start {
+  width: 60px;
+  text-align:center;
+  position: absolute;
+  top: 75px;
+  left: 0px;
+  font-size: 0.8em;
+}

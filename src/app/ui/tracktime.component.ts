@@ -8,7 +8,6 @@ import * as actions from '../store/actions';
 @Component({
   selector: 'app-track-time',
   templateUrl: './tracktime.component.html',
-  styleUrls: ['./tracktime.component.scss']
 })
 export class AppTrackTimeComponent {
 

@@ -23,12 +23,12 @@
     </div>
   </div>
 
-  <div class="card"
-    *ngFor="let track of tracks; trackBy:byObj">
+  <div class="card" *ngFor="let track of tracks; trackBy:byObj">
     <app-track-time [track]="track"
       *ngIf="track.kind == 'time'"></app-track-time>
-
-    <span *ngIf="track.kind == 'counter'">{{ track | json }}</span>
+    <app-track-counter
+      *ngIf="track.kind == 'counter'"
+      [track]="track"></app-track-counter>
   </div>
 
 

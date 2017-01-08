@@ -6,6 +6,7 @@ import { AppHeaderComponent } from './header.component';
 import { FabComponent } from './fab.component';
 import { AppAddTrackComponent } from './addtrack.component';
 import { AppTrackTimeComponent } from './tracktime.component';
+import { AppTrackCounterComponent } from './trackcounter.component';
 import { AppTrackClockComponent } from './trackclock.component';
 import { AppRecordButtonComponent } from './recordbtn.component';
 import { TimeSincePipe } from './time.pipe';
@@ -15,6 +16,7 @@ const COMPONENTS = [
     AppHeaderComponent,
     FabComponent,
     AppAddTrackComponent,
+    AppTrackCounterComponent,
     AppTrackTimeComponent,
     AppTrackClockComponent,
     AppRecordButtonComponent,

@@ -1,0 +1,19 @@
+
+
+<span class="card_icon">
+  <img src="assets/counter.svg" />
+</span>
+
+<h3 class="card_title">{{ track.desc }}</h3>
+
+<span class="amount">{{ track.amount }}</span>
+
+<div class="record">
+  <div class="btn" (click)="trackCounter()">
+    <img src="assets/plus.svg" />
+  </div>
+</div>
+<p class="record-start">
+  <span>Track</span>
+</p>
+<div class="amount today"><span>TODAY: {{ track.today }}</span></div>

@@ -1,17 +1,18 @@
 
-<span class="icon">
+<span class="card_icon">
   <img src="assets/timer.svg" />
 </span>
 
-<h3>{{ track.desc }}</h3>
+<h3 class="card_title">{{ track.desc }}</h3>
 
-<app-track-clock
+<app-track-clock class="amount"
   [time]="track.amount"
   [state]="track.state"
   [last]="track.lastRecord"></app-track-clock>
 
 <div class="record">
   <app-record-button
+    class="btn"
     [state]="track.state"
     (select)="trackTime($event)"
     [colors]="{stopped: '#1695a3', recording: '#f15a24'}"
@@ -22,7 +23,7 @@
   <span *ngIf="track.state=='recording'">Stop</span>
 </p>
 
-<app-track-clock class="today"
+<app-track-clock class="amount today"
   [time]="track.today"
   [state]="track.state"
   [last]="track.lastRecord"><span>TODAY: </span></app-track-clock>
