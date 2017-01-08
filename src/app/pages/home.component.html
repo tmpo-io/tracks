@@ -23,8 +23,9 @@
     </div>
   </div>
 
-  <div class="card_ct" *ngFor="let track of tracks; trackBy:byObj">
-    <div class="card_main">
+  <div class="card_ct"
+    *ngFor="let track of tracks; trackBy:byObj">
+    <div class="card_main" (appSwiperRight)="delete()">
       <app-track-time [track]="track"
         *ngIf="track.kind == 'time'"></app-track-time>
       <app-track-counter

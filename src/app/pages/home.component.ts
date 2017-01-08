@@ -7,13 +7,14 @@ import { Observable } from 'rxjs/Observable';
 
 import { Track } from '../store/model';
 
+declare var window: any;
 
 @Component({
   selector: 'app-page-home',
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageHomeComponent  {
+export class PageHomeComponent {
 
   @Input() tracks: Track[] = [];
 
@@ -31,6 +32,10 @@ export class PageHomeComponent  {
 
   byObj(item) {
     return item.id;
+  }
+
+  delete() {
+    window.alert('delete');
   }
 
 }
