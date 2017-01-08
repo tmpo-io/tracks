@@ -15,13 +15,14 @@ export function getId(): string {
 export const today = () =>
   (new Date()).setHours(0, 0, 0, 0);
 
-export const getTimeToday = (logsEntities, track) =>
-  {
-    return Object.keys(logsEntities)
-      .map(obj => logsEntities[obj])
-      .filter(el => el.time >= today() && el.trackId === track.id && el.action === 'stop')
-      .reduce((a, b) => a + b.amount, 0);
-  };
+export const getTimeToday = (logsEntities, track) => {
+  return Object.keys(logsEntities)
+    .map(obj => logsEntities[obj])
+    .filter(el => el.time >= today() &&
+      el.trackId === track.id &&
+      (el.action === 'stop' || el.action === 'track'))
+    .reduce((a, b) => a + b.amount, 0);
+};
 
 
 const defaultTrack = (counter) => ({
@@ -83,7 +84,7 @@ export function reducerTracks(state = initialState, action: Action): State {
       return newState(
         state,
         cl(track, { lastRecord, amount }),
-        logTrack(lastRecord, track.id, 'track', amount)
+        logTrack(lastRecord, track.id, 'track', 1)
       );
     }
   }
