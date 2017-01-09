@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { Track } from '../store/model';
+import * as actions from '../store/actions';
 
 declare var window: any;
 
@@ -23,19 +24,16 @@ export class PageHomeComponent {
   constructor(public store: Store<any>) { }
 
   addTrack(event) {
-    this.store.dispatch({
-      type: 'TRACK_ADD',
-      payload: event
-    });
+    this.store.dispatch(actions.addTrack(event));
     this.showAdd = false;
   }
 
-  byObj(item) {
-    return item.id;
+  byObj(index, item) {
+    return item;
   }
 
-  delete() {
-    window.alert('delete');
+  delete(track: string) {
+    this.store.dispatch(actions.trackDelete(track));
   }
 
 }

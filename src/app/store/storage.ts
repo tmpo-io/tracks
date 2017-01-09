@@ -45,7 +45,8 @@ export class Storage {
   save$ = this.actions$
     .ofType(
     actions.TRACK_ADD, actions.TRACK_START,
-    actions.TRACK_COUNT, actions.TRACK_STOP
+    actions.TRACK_COUNT, actions.TRACK_STOP,
+    actions.TRACK_DELETE,
     )
     .switchMap(act => {
       return this.store

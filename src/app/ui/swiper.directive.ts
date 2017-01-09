@@ -69,15 +69,16 @@ export class SwiperRightDirective implements OnInit, OnDestroy {
     };
     this.zone.runOutsideAngular(() => {
       this.move$ = stream$(this.element, move, this.destroy$);
-      this.move$.subscribe(x => {
+    });
+    this.move$.subscribe(this.zone.run(() => x => {
         if (x > (width / 2)) {
           this.left = '100%';
           this.appSwiperRight.next(true);
         } else {
           this.left = '0px';
         }
-      });
-    });
+      })
+      );
   }
 
   set left(x: string) {
