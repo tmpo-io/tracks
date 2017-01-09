@@ -53,6 +53,7 @@ export function trackCount(id: string, time = now()): Action {
 
 export function trackDelete(id: string): Action {
   return {
-    type: TRACK_DELETE
+    type: TRACK_DELETE,
+    payload: id
   };
 }

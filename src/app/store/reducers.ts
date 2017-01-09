@@ -5,6 +5,7 @@ import {
 } from './model';
 import * as actions from './actions';
 import { loadStore } from './storage';
+import { deleteKeys } from './utils';
 
 let id = 0;
 
@@ -93,10 +94,10 @@ export function reducerTracks(state = initialState, action: Action): State {
 
     case actions.TRACK_DELETE: {
       let logIds = logsForTrack(state.logsEntities, action.payload);
-      console.log(logIds);
+      // console.log('ids', logIds);
       return cl(state, {
-        tracks: state.tracks.filter(i => i === action.payload),
-        tracksEntities: deleteKeys(state.tracksEntities, [action.payload]),
+        tracks: state.tracks.filter(i => i !== action.payload),
+        tracksEntities: deleteKeys(state.tracksEntities, [].concat(action.payload)),
         logs: state.logs.filter(i => logIds.indexOf(i) === -1),
         logsEntities: deleteKeys(state.logsEntities, logIds)
       });
@@ -109,19 +110,8 @@ export function reducerTracks(state = initialState, action: Action): State {
 export function logsForTrack(entities, trackId) {
   return Object.keys(entities)
     .map(k => entities[k])
-    .filter(el => el.trackId !== trackId)
+    .filter(el => el.trackId === trackId)
     .map(el => el.id);
-}
-
-
-function deleteKeys(obj, deleteKey: string[]): any {
-  return Object.keys(obj)
-    .filter(key => deleteKey.indexOf(key) === -1)
-    .map(trace)
-    .reduce((result, current) => {
-      result[current] = obj[current];
-      return result;
-    }, {});
 }
 
 
