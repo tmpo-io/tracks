@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { Track } from '../store/model';
 import * as actions from '../store/actions';
 
-declare var window: any;
+declare var window: Window;
 
 @Component({
   selector: 'app-page-home',
@@ -26,6 +26,7 @@ export class PageHomeComponent {
   addTrack(event) {
     this.store.dispatch(actions.addTrack(event));
     this.showAdd = false;
+    window.scrollTo(0,0);
   }
 
   byObj(index, item) {
