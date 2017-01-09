@@ -36,8 +36,8 @@ h1,h2,h3,h4 {
 
 
 app-fab {
-  position: fixed;
-  bottom: 3%;
+  position: absolute;
+  top: 88vh;
   right: 5%;
   z-index: 1000;
 }
@@ -133,7 +133,8 @@ hr {
   z-index: 9;
 
   &.delete {
-    background-color: red;
+    border-radius: 15px;
+    background-color:#932222;
     color: #fff;
     display: flex;
     display: flex;

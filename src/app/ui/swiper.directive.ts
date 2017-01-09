@@ -14,17 +14,9 @@ import 'rxjs/add/operator/takeLast';
 
 const filter = (first) => current => current > first + 5;
 
-const onSwipe = (ini: any) => (e: TouchEvent) => {
-  let x = e.touches[0].clientX - ini;
-  let success = (x > 100) ? true : false;
-  let direction = (x > 0) ? 'right' : 'left';
-  return { x, success };
-};
-
 const treshold = (x: number) => (e: TouchEvent) => {
   return e.touches[0].clientX - x < 20 || x < 0;
 };
-
 
 const stream$ = (el, effect, destroy) => {
   const start$ = fromEvent(el, 'touchstart');
@@ -34,7 +26,6 @@ const stream$ = (el, effect, destroy) => {
   return start$
     .map((ev: any) => ev.touches[0].clientX)
     .mergeMap(x => move$
-      // .startWith({touches: [{clientX: 0}]})
       .skipWhile(treshold(x))
       .takeUntil(end$)
       .map((e: TouchEvent) => e.touches[0].clientX - x)
@@ -42,8 +33,6 @@ const stream$ = (el, effect, destroy) => {
       .takeLast(1)
     );
 };
-
-
 
 @Directive({
   selector: '[appSwiperRight]'

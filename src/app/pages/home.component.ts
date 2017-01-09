@@ -29,7 +29,7 @@ export class PageHomeComponent {
   }
 
   byObj(index, item) {
-    return item;
+    return item.id;
   }
 
   delete(track: string) {
