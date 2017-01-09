@@ -26,7 +26,7 @@ export class PageHomeComponent {
   addTrack(event) {
     this.store.dispatch(actions.addTrack(event));
     this.showAdd = false;
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   byObj(index, item) {
