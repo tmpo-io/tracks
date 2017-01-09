@@ -12,8 +12,6 @@ import 'rxjs/add/operator/skipWhile';
 import 'rxjs/add/operator/takeLast';
 
 
-const filter = (first) => current => current > first + 5;
-
 const treshold = (x: number) => (e: TouchEvent) => {
   return e.touches[0].clientX - x < 20 || x < 0;
 };
