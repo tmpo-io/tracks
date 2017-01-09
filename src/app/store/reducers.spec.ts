@@ -75,5 +75,24 @@ describe('tracks', () => {
 
   });
 
+  it('should handle deleting tracks', () => {
+
+    let s = reducerTracks(state, actions.addTrack({
+      kind: 'counter', id: 'test'
+    }));
+    s = reducerTracks(s, actions.trackCount('test'));
+    s = reducerTracks(s, actions.trackCount('test'));
+    expect(s.logs.length).toBe(2);
+
+    let res = reducerTracks(s, actions.trackDelete('test'));
+    expect(res.logs.length).toBe(0);
+    expect(Object.keys(res.logsEntities).length).toBe(0);
+    expect(res.tracks.length).toBe(0);
+    console.log(res.tracksEntities);
+    expect(Object.keys(res.tracksEntities).length).toBe(0);
+
+  });
+
+
 
 });

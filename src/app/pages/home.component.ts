@@ -7,21 +7,20 @@ import { Observable } from 'rxjs/Observable';
 
 import { Track } from '../store/model';
 
+declare var window: any;
 
 @Component({
   selector: 'app-page-home',
   templateUrl: './home.component.html',
-  styles: [''],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageHomeComponent  {
+export class PageHomeComponent {
 
   @Input() tracks: Track[] = [];
 
   showAdd: false;
 
   constructor(public store: Store<any>) { }
-
 
   addTrack(event) {
     this.store.dispatch({
@@ -34,8 +33,9 @@ export class PageHomeComponent  {
   byObj(item) {
     return item.id;
   }
-  // byId(item) {
-  //   return item.id;
-  // }
+
+  delete() {
+    window.alert('delete');
+  }
 
 }

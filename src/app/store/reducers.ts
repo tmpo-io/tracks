@@ -5,8 +5,12 @@ import {
 } from './model';
 import * as actions from './actions';
 import { loadStore } from './storage';
+import { deleteKeys } from './utils';
 
 let id = 0;
+
+const trace = (l) => { console.log('[trace]', l); return l; };
+
 
 export function getId(): string {
   return (new Date()).getTime() + '-' + ++id;
@@ -87,8 +91,27 @@ export function reducerTracks(state = initialState, action: Action): State {
         logTrack(lastRecord, track.id, 'track', 1)
       );
     }
+
+    case actions.TRACK_DELETE: {
+      let logIds = logsForTrack(state.logsEntities, action.payload);
+      // console.log('ids', logIds);
+      return cl(state, {
+        tracks: state.tracks.filter(i => i !== action.payload),
+        tracksEntities: deleteKeys(state.tracksEntities, [].concat(action.payload)),
+        logs: state.logs.filter(i => logIds.indexOf(i) === -1),
+        logsEntities: deleteKeys(state.logsEntities, logIds)
+      });
+    }
   }
   return state;
+}
+
+
+export function logsForTrack(entities, trackId) {
+  return Object.keys(entities)
+    .map(k => entities[k])
+    .filter(el => el.trackId === trackId)
+    .map(el => el.id);
 }
 
 
