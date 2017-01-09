@@ -4,12 +4,24 @@ import {
   ViewChild, AfterViewInit
 } from '@angular/core';
 
+import { state, style, transition, animate, trigger } from '@angular/core';
 
 
 @Component({
   selector: 'app-add-track',
   templateUrl: './addtrack.component.html',
-  styleUrls: ['./addtrack.component.scss']
+  styleUrls: ['./addtrack.component.scss'],
+  animations: [
+    trigger('in', [
+      state('*', style({
+        transform: 'translate3d(0, 0, 0) rotateX(0deg)'
+      })),
+      state('void', style({
+        transform: 'translate3d(0, -100px, -200px) rotateX(80deg)'
+      })),
+      transition('* <=> *', animate('300ms ease-out')),
+    ])
+  ]
 })
 export class AppAddTrackComponent implements AfterViewInit {
 
@@ -17,6 +29,9 @@ export class AppAddTrackComponent implements AfterViewInit {
   @Output() dismiss: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('form') form;
+
+  @HostBinding('@in')
+  in = 'in';
 
   kind = 'time';
 
@@ -40,5 +55,10 @@ export class AppAddTrackComponent implements AfterViewInit {
 
   }
 
+  key($event) {
+    if ($event.keyCode === 13) {
+      this.submit();
+    }
+  }
 
 }

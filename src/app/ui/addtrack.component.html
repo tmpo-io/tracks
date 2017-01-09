@@ -6,7 +6,8 @@
 <h2>ADD A NEW TRACK</h2>
 
 <input name="desc" type="text" #form
-  placeholder="Add your track title"  />
+  placeholder="Add your track title"
+  (keyup)="key($event)" />
 
 <div class="kind">
   <div class="ele"
