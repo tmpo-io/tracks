@@ -8,6 +8,9 @@ import { loadStore } from './storage';
 
 let id = 0;
 
+const trace = (l) => { console.log('[trace]', l); return l; };
+
+
 export function getId(): string {
   return (new Date()).getTime() + '-' + ++id;
 }
@@ -87,8 +90,38 @@ export function reducerTracks(state = initialState, action: Action): State {
         logTrack(lastRecord, track.id, 'track', 1)
       );
     }
+
+    case actions.TRACK_DELETE: {
+      let logIds = logsForTrack(state.logsEntities, action.payload);
+      console.log(logIds);
+      return cl(state, {
+        tracks: state.tracks.filter(i => i === action.payload),
+        tracksEntities: deleteKeys(state.tracksEntities, [action.payload]),
+        logs: state.logs.filter(i => logIds.indexOf(i) === -1),
+        logsEntities: deleteKeys(state.logsEntities, logIds)
+      });
+    }
   }
   return state;
+}
+
+
+export function logsForTrack(entities, trackId) {
+  return Object.keys(entities)
+    .map(k => entities[k])
+    .filter(el => el.trackId !== trackId)
+    .map(el => el.id);
+}
+
+
+function deleteKeys(obj, deleteKey: string[]): any {
+  return Object.keys(obj)
+    .filter(key => deleteKey.indexOf(key) === -1)
+    .map(trace)
+    .reduce((result, current) => {
+      result[current] = obj[current];
+      return result;
+    }, {});
 }
 
 
