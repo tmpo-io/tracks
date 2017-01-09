@@ -1,0 +1,15 @@
+0.0.0.0:4200
+gzip
+
+tls self_signed
+
+rewrite {
+    if {file} not favicon.ico
+    if {file} not manifest.json
+    if {file} not service-worker.js
+    if {path} not_has /assets
+    to {path} {path}/ /index.html
+
+}
+
+root ./dist

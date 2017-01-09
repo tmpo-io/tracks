@@ -1,0 +1,30 @@
+{
+  "name": "Tracks",
+  "short_name": "Tracks",
+  "description": "Track times or counters as you go"
+  "icons": [{
+    "src": "assets/img/icon120x120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }, {
+      "src": "assets/img/icon150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    }, {
+      "src": "assets/img/icon152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "assets/img/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "assets/img/icon256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#bdd0d2",
+  "theme_color": "#1695a3"
+}
