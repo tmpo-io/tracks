@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule} from '@angular/common';
 
+import { RouterModule } from '../router';
+
 import { AppHeaderComponent } from './header.component';
 import { FabComponent } from './fab.component';
 import { AppAddTrackComponent } from './addtrack.component';
@@ -26,7 +28,7 @@ const COMPONENTS = [
 
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })

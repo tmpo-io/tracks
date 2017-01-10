@@ -6,6 +6,8 @@ import { state, style, transition, animate, trigger } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { RouterService } from '../router';
+
 import { Track } from '../store/model';
 import * as actions from '../store/actions';
 
@@ -33,7 +35,8 @@ export class PageHomeComponent {
 
   showAdd: false;
 
-  constructor(public store: Store<any>) { }
+  constructor(public store: Store<any>, public router: RouterService) {
+  }
 
   addTrack(event) {
     this.store.dispatch(actions.addTrack(event));
@@ -47,6 +50,11 @@ export class PageHomeComponent {
 
   delete(track: string) {
     this.store.dispatch(actions.trackDelete(track));
+  }
+
+  goto() {
+    console.log('goto');
+    this.router.go('/track/1');
   }
 
 }

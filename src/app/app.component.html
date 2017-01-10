@@ -1,3 +1,5 @@
 
-<app-page-home [tracks]="tracks$ | async"></app-page-home>
+<app-page-home
+  data-if="route == ''"
+  [tracks]="tracks$ | async"></app-page-home>
 

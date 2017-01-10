@@ -9,4 +9,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+declare var window:any;
+
+window.pl = platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+
+
