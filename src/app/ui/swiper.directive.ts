@@ -25,7 +25,7 @@ const treshold = (x: number, y: number) => (e: TouchEvent) => {
 };
 
 const vtreshold = (y: number) => (e: TouchEvent) => {
-  return Math.abs(e.touches[0].clientY - y) < 20;
+  return Math.abs(e.touches[0].clientY - y) < 50;
 };
 
 const stream$ = (el, effect, destroy) => {
