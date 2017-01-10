@@ -9,7 +9,7 @@
     (add)="addTrack($event)"
     ></app-add-track>
 
-  <div class="card intro" *ngIf="tracks.length == 0">
+  <div class="card intro" *ngIf="tracks.length == 0" [@in]="'in'" >
     <img src="assets/logo.svg" height="80" />
     <h2>START TRACKING</h2>
     <hr />
@@ -24,7 +24,7 @@
   </div>
 
   <div class="card_ct"
-    *ngFor="let track of tracks; trackBy:byObj">
+    *ngFor="let track of tracks; trackBy:byObj" [@in]="'in'">
     <div class="card_main" (appSwiperRight)="delete(track.id)">
       <app-track-time [track]="track"
         *ngIf="track.kind == 'time'"></app-track-time>

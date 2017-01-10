@@ -2,6 +2,7 @@ import {
   Component, Input, OnInit,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { state, style, transition, animate, trigger } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +14,18 @@ declare var window: Window;
 @Component({
   selector: 'app-page-home',
   templateUrl: './home.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('in', [
+      state('*', style({
+        transform: 'scaleY(1)'
+      })),
+      state('void', style({
+        transform: 'scaleY(0)'
+      })),
+      transition('* => void', animate('0.3s ease-out')),
+    ])
+  ]
 })
 export class PageHomeComponent {
 
