@@ -10,10 +10,22 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/skipWhile';
 import 'rxjs/add/operator/takeLast';
+import 'rxjs/add/operator/takeWhile';
 
 
-const treshold = (x: number) => (e: TouchEvent) => {
+const coords = (ev: TouchEvent) => {
+  return {
+    x: ev.touches[0].clientX,
+    y: ev.touches[0].clientY
+  };
+};
+
+const treshold = (x: number, y: number) => (e: TouchEvent) => {
   return e.touches[0].clientX - x < 20 || x < 0;
+};
+
+const vtreshold = (y: number) => (e: TouchEvent) => {
+  return Math.abs(e.touches[0].clientY - y) < 20;
 };
 
 const stream$ = (el, effect, destroy) => {
@@ -22,12 +34,13 @@ const stream$ = (el, effect, destroy) => {
   const end$ = fromEvent(el, 'touchend');
 
   return start$
-    .map((ev: any) => ev.touches[0].clientX)
-    .mergeMap(x => move$
-      .skipWhile(treshold(x))
+    .map(coords)
+    .mergeMap(({x, y}) => move$
+      .skipWhile(treshold(x, y))
+      .takeWhile(vtreshold(y))
       .takeUntil(end$)
       .map((e: TouchEvent) => e.touches[0].clientX - x)
-      .do(y => effect(y))
+      .do(yy => effect(yy))
       .takeLast(1)
     );
 };
@@ -58,14 +71,14 @@ export class SwiperRightDirective implements OnInit, OnDestroy {
       this.move$ = stream$(this.element, move, this.destroy$);
     });
     this.move$.subscribe(this.zone.run(() => x => {
-        if (x > (width / 2)) {
-          this.left = '100%';
-          this.appSwiperRight.next(true);
-        } else {
-          this.left = '0px';
-        }
-      })
-      );
+      if (x > (width / 2)) {
+        this.left = '100%';
+        this.appSwiperRight.next(true);
+      } else {
+        this.left = '0px';
+      }
+    })
+    );
   }
 
   set left(x: string) {
