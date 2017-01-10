@@ -14,5 +14,17 @@
     </div>
   </div>
 
+  <div class="stats card" *ngIf="track.kind == 'counter'">
+    <p>TODAY: <span>{{ track.today }}</span></p>
+    <p>YESTERDAY: <span>{{ track.yesterday }}</span></p>
+    <p>WEEK: <span>{{ track.week }}</span></p>
+  </div>
+
+  <div class="stats card" *ngIf="track.kind == 'time'">
+    <p>TODAY: <span>{{ track.today | timesince }}</span></p>
+    <p>YESTERDAY: <span>{{ track.yesterday | timesince }}</span></p>
+    <p>WEEK: <span>{{ track.week | timesince }}</span></p>
+  </div>
+
 
 </div>

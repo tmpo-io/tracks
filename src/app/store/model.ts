@@ -11,6 +11,8 @@ export class Track {
   amount: number;
   state?: 'stopped' | 'recording';
   today?: number;
+  yesterday?: number;
+  week?: number;
   logs?: TrackLog[];
 }
 
@@ -29,7 +31,7 @@ export interface State {
   tracks: string[];
   tracksEntities: { [id: string]: Track };
   logs: string[];
-  logsEntities: {[id: string]: TrackLog };
+  logsEntities: { [id: string]: TrackLog };
 }
 
 export interface AppState {

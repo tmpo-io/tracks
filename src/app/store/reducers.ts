@@ -9,9 +9,6 @@ import { deleteKeys } from './utils';
 
 let id = 0;
 
-
-
-
 export function getId(): string {
   return (new Date()).getTime() + '-' + ++id;
 }

@@ -3,10 +3,16 @@
 // [keys]::{key:{}} => [{}]
 const toList = (keys, obj) => keys.map(k => obj[k]);
 
+const day = 3600 * 1000 * 24;
 
-export const today = () =>
-  (new Date()).setHours(0, 0, 0, 0);
+export const today = () => (new Date()).setHours(0, 0, 0, 0);
+export const yesterday = () => today() - day;
+export const week = () => today() - 7 * day;
 
+const sum = (a, b) => a + b.amount;
+
+const filterTime = (from, to) => (l) =>
+  l.time > from && l.time < to;
 
 export const getTimeToday = (logsEntities, track) => {
   return Object.keys(logsEntities)
@@ -29,10 +35,12 @@ export const dataForTrack = (id) => (state) => {
   return Object
     .assign({}, state.tracksEntities[id], {
       logs,
-      today: t
+      today: t,
+      yesterday: logs.filter(filterTime(today(), yesterday())).reduce(sum, 0),
+      week: logs.filter(filterTime(today(), week())).reduce(sum, 0)
     });
 
-  };
+};
 
 
 const trace = (l) => {
