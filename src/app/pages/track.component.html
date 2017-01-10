@@ -1,0 +1,18 @@
+
+
+<app-header></app-header>
+
+<div class="wrap fb">
+
+  <div class="card_ct">
+    <div class="card_main">
+      <app-track-time [track]="track"
+        *ngIf="track.kind == 'time'"></app-track-time>
+      <app-track-counter
+        *ngIf="track.kind == 'counter'"
+        [track]="track"></app-track-counter>
+    </div>
+  </div>
+
+
+</div>

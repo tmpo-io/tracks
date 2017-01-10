@@ -35,7 +35,8 @@ export class PageHomeComponent {
 
   showAdd: false;
 
-  constructor(public store: Store<any>, public router: RouterService) {
+  constructor(public store: Store<any>,
+    public router: RouterService) {
   }
 
   addTrack(event) {
@@ -52,9 +53,8 @@ export class PageHomeComponent {
     this.store.dispatch(actions.trackDelete(track));
   }
 
-  goto() {
-    console.log('goto');
-    this.router.go('/track/1');
+  goto(id = '') {
+    this.router.go('/track/' + id);
   }
 
 }

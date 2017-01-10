@@ -25,7 +25,7 @@
 
   <div class="card_ct"
     *ngFor="let track of tracks; trackBy:byObj" [@in]="'in'">
-    <div class="card_main" (click)="goto()" (appSwiperRight)="delete(track.id)">
+    <div class="card_main" (click)="goto(track.id)" (appSwiperRight)="delete(track.id)">
       <app-track-time [track]="track"
         *ngIf="track.kind == 'time'"></app-track-time>
       <app-track-counter

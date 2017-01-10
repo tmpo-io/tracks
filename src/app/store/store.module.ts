@@ -6,11 +6,14 @@ import { reducerTracks } from './reducers';
 
 import { Storage } from './storage';
 
+import * as router from '../router/reducer';
+
 
 @NgModule({
   imports: [
     StoreModule.provideStore({
-      data: reducerTracks
+      data: reducerTracks,
+      router: router.reducer,
     }),
     EffectsModule.run(Storage)
   ]

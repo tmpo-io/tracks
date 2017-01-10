@@ -1,29 +1,33 @@
 import { Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
+import { Store } from '@ngrx/store';
+
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import * as actions from './actions';
 
 /*
-A lifted Router module
-
+Lifted and ugly router module...
 */
-// => Observable of router states..
+
 
 @Injectable()
 export class RouterService {
 
-  constructor(private location: Location) {
-    console.log(location.path());
-  }
-
-  connect() {
+  constructor(
+    private location: Location,
+    public store: Store<any>) {
+    // console.log(location.path());
+    this.store.dispatch(actions.goto(location.path()));
     this.location.subscribe(e => {
-      console.log('Location', e)
-    })
+      this.store.dispatch(actions.goto(e.url));
+    });
   }
 
-  go(path: string, query?: string) {
-    this.location.go(path, query);
+
+  go(path: string) {
+    this.location.go(path);
+    this.store.dispatch(actions.goto(path));
   }
 
 
@@ -35,7 +39,7 @@ export class RouterService {
   providers: [
     RouterService,
     Location,
-    {provide: LocationStrategy, useClass: PathLocationStrategy}
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
   ]
 })
-export class RouterModule {}
+export class RouterModule { }

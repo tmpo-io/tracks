@@ -4,18 +4,22 @@ import { CommonModule } from '@angular/common';
 
 import { UIModule } from '../ui/ui.module';
 import { PageHomeComponent } from './home.component';
+import { PageTrackComponent } from './track.component';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
-    UIModule
+    UIModule,
   ],
   declarations: [
-    PageHomeComponent
+    PageHomeComponent,
+    PageTrackComponent
   ],
   exports: [
-    PageHomeComponent
+    PageHomeComponent,
+    PageTrackComponent
   ]
 })
 export class PagesModule {}
