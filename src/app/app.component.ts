@@ -7,7 +7,8 @@ import 'rxjs/add/operator/map';
 
 import { Track } from './store/model';
 import * as actions from './store/actions';
-import { getTimeToday } from './store/reducers';
+import { dataForTrack, getTimeToday } from './store/selectors';
+
 import { RouterService } from './router';
 
 @Component({
@@ -49,18 +50,20 @@ export class AppComponent implements OnInit {
         this.path = p;
       });
 
-    this.store
-      .select((state: any) => ({
-        router: state.router,
-        tracks: state.data
-      }))
-      .subscribe(x => console.log(x));
+    this.track$ = this.store
+      .select((state: any) => state.router)
+      .switchMap(route => {
+        let id = route.route.replace('/track/', '');
+        return this.store
+          .select((s: any) => s.data)
+          .map(dataForTrack(id));
 
+      });
 
   }
 
 
-  // // RouteService.change
+  // // RouteService.change.
   //     .subscribe(route => {
 
   //     })

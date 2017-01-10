@@ -1,12 +1,9 @@
 :host {
-
+  display: block;
   background-color: currentColor;
   border-radius: 0px 0px 10vw 10vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+  height: 120px;
+  position: relative;
 }
 
 h1 {
@@ -16,6 +13,7 @@ h1 {
   margin-top: 0px;
   margin-bottom: 50px;
   font-weight: normal;
+  text-align: center;
 }
 
 img {
@@ -23,3 +21,14 @@ img {
   width: 25vw;
 }
 
+
+.back {
+  position: absolute;
+
+  top: 5px;
+  left: 10px;
+
+  img {
+    width: 32px;
+  }
+}

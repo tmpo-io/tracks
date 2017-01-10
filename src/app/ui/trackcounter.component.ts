@@ -16,8 +16,9 @@ export class AppTrackCounterComponent {
 
   constructor(public store: Store<any>) { }
 
-  trackCounter() {
+  trackCounter($event) {
     this.store.dispatch(actions.trackCount(this.track.id));
+    $event.stopPropagation();
   }
 
 

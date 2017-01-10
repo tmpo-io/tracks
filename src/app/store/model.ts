@@ -11,6 +11,7 @@ export class Track {
   amount: number;
   state?: 'stopped' | 'recording';
   today?: number;
+  logs?: TrackLog[];
 }
 
 

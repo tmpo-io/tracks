@@ -3,3 +3,6 @@
   data-if="route == ''"
   [tracks]="tracks$ | async"></app-page-home>
 
+<app-page-track
+  *ngIf="path.startsWith('/track/')"
+  [track]="track$ | async"></app-page-track>

@@ -9,24 +9,12 @@ import { deleteKeys } from './utils';
 
 let id = 0;
 
-const trace = (l) => { console.log('[trace]', l); return l; };
+
 
 
 export function getId(): string {
   return (new Date()).getTime() + '-' + ++id;
 }
-
-export const today = () =>
-  (new Date()).setHours(0, 0, 0, 0);
-
-export const getTimeToday = (logsEntities, track) => {
-  return Object.keys(logsEntities)
-    .map(obj => logsEntities[obj])
-    .filter(el => el.time >= today() &&
-      el.trackId === track.id &&
-      (el.action === 'stop' || el.action === 'track'))
-    .reduce((a, b) => a + b.amount, 0);
-};
 
 
 const defaultTrack = (counter) => ({

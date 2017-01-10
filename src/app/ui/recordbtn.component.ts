@@ -20,7 +20,7 @@ export interface ColorState {
   selector: 'app-record-button',
   template: `<div [@state]="state"
     [style.background-color]="color"
-    (click)="setState()"></div>`,
+    (click)="setState($event)"></div>`,
   styles: [`
     :host {
       display: block;
@@ -57,7 +57,7 @@ export class AppRecordButtonComponent {
   colors: ColorState = { stopped: 'red', recording: 'black' };
 
 
-  setState() {
+  setState($event) {
     if (this.state === 'recording') {
       this.state = 'stopped';
     } else {
@@ -65,6 +65,7 @@ export class AppRecordButtonComponent {
     }
 
     this.select.next(this.state);
+    $event.stopPropagation();
   }
 
   get color(): string {
