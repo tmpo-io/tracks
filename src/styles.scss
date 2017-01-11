@@ -51,7 +51,7 @@ app-fab {
 
 .wrap {
   width: 100%;
-  height: 90%;
+  height: calc(100% - 130px);
   overflow: scroll;
   margin-top: -40px;
   perspective: 1500px;

@@ -41,6 +41,7 @@
 </div>
 
 <app-fab background="#fff"
+  *ngIf="!showAdd"
   (click)="showAdd=true">
     <img src="assets/plus.svg" width="20" />
 </app-fab>
