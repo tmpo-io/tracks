@@ -30,14 +30,14 @@ export const dataForTrack = (id) => (state) => {
     .reverse();
 
   let t = logs.filter(l => l.time > today())
-    .reduce((a, b) => a + b.amount, 0);
+    .reduce(sum, 0);
 
   return Object
     .assign({}, state.tracksEntities[id], {
       logs,
       today: t,
-      yesterday: logs.filter(filterTime(today(), yesterday())).reduce(sum, 0),
-      week: logs.filter(filterTime(today(), week())).reduce(sum, 0)
+      yesterday: logs.filter(filterTime(yesterday(), today())).reduce(sum, 0),
+      week: logs.filter(filterTime(week(), today())).reduce(sum, 0)
     });
 
 };
