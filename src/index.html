@@ -14,13 +14,10 @@
 <body>
   <app-root>Loading...</app-root>
 <script>
+  // && location.host.indexOf('localhost') === -1
   if ('serviceWorker' in navigator
-    && location.host.indexOf('localhost') === -1) {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-      console.log('Service Worker registered');
-    }).catch(function(err) {
-      console.log('Service Worker registration failed: ', err);
-    });
+    ) {
+    window.sworker = navigator.serviceWorker.register('/service-worker.js')
   }
 </script>
 </body>

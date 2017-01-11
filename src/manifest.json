@@ -1,7 +1,7 @@
 {
   "name": "Tracks",
   "short_name": "Tracks",
-  "description": "Track times or counters as you go"
+  "description": "Track times or counters as you go",
   "icons": [{
     "src": "assets/img/icon120x120.png",
       "sizes": "120x120",
