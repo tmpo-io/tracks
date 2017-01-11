@@ -243,3 +243,11 @@ h3.card_title {
 
   }
 }
+
+.table {
+  h3 {
+    text-align: center;
+    color: $black;
+  }
+  min-height: auto;
+}

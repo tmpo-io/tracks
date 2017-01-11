@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
       .select('router')
       .map((s: any) => s.route)
       .subscribe((p) => {
-        console.log('path', p);
         this.path = p;
       });
 

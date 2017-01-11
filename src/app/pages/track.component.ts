@@ -12,6 +12,8 @@ import * as actions from '../store/actions';
 })
 export class PageTrackComponent {
 
+  page: number;
+
   @Input() set track(track: Track) {
     this._track = track;
   }
@@ -43,12 +45,13 @@ export class PageTrackComponent {
         stopped: t.time,
         amount: t.amount,
         id: t.id
-      }));
+      })).slice(0, 10);
   }
 
   counterTable() {
     return this._track.logs
-      .filter(t => t.action === 'track');
+      .filter(t => t.action === 'track')
+      .slice(0, 10);
   }
 
   trackFunc(ind, obj) {

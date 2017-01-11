@@ -27,15 +27,17 @@
   </div>
 
   <div class="stats card table" *ngIf="track.kind == 'time'">
+    <h3>Latest entries</h3>
     <p *ngFor="let item of table; trackBy:trackFunc">
-      {{ item.started | date:"y/M/d H:m" }}
+      {{ item.started | date:"y/M/d H:mm" }}
       <span>{{ item.amount | timesince }}</span>
     </p>
   </div>
 
   <div class="stats card table" *ngIf="track.kind == 'counter'">
+    <h3>Latest entries</h3>
     <p *ngFor="let item of table; trackBy:trackFunc">
-      {{ item.time | date:"y/M/d H:m" }}
+      {{ item.time | date:"y/M/d H:mm" }}
       <span>{{ item.amount }}</span>
     </p>
   </div>
