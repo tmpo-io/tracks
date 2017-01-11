@@ -15,16 +15,31 @@
   </div>
 
   <div class="stats card" *ngIf="track.kind == 'counter'">
-    <p>TODAY: <span>{{ track.today }}</span></p>
-    <p>YESTERDAY: <span>{{ track.yesterday }}</span></p>
-    <p>WEEK: <span>{{ track.week }}</span></p>
+    <p>TODAY <span>{{ track.today }}</span></p>
+    <p>YESTERDAY <span>{{ track.yesterday }}</span></p>
+    <p>WEEK <span>{{ track.week }}</span></p>
   </div>
 
   <div class="stats card" *ngIf="track.kind == 'time'">
-    <p>TODAY: <span>{{ track.today | timesince }}</span></p>
-    <p>YESTERDAY: <span>{{ track.yesterday | timesince }}</span></p>
-    <p>WEEK: <span>{{ track.week | timesince }}</span></p>
+    <p>TODAY <span>{{ track.today | timesince }}</span></p>
+    <p>YESTERDAY <span>{{ track.yesterday | timesince }}</span></p>
+    <p>WEEK <span>{{ track.week | timesince }}</span></p>
   </div>
+
+  <div class="stats card table" *ngIf="track.kind == 'time'">
+    <p *ngFor="let item of table; trackBy:trackFunc">
+      {{ item.started | date:"y/M/d H:m" }}
+      <span>{{ item.amount | timesince }}</span>
+    </p>
+  </div>
+
+  <div class="stats card table" *ngIf="track.kind == 'counter'">
+    <p *ngFor="let item of table; trackBy:trackFunc">
+      {{ item.time | date:"y/M/d H:m" }}
+      <span>{{ item.amount }}</span>
+    </p>
+  </div>
+
 
 
 </div>

@@ -227,3 +227,19 @@ h3.card_title {
   left: 0px;
   font-size: 0.8em;
 }
+
+
+.stats {
+  p {
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+
+    span {
+      position: absolute;
+      right: 0px;
+      color: $black;
+      font-weight: bold;
+    }
+
+  }
+}
