@@ -1,18 +1,20 @@
 
 // flattens a {key:{}} to a [{}] given a sorted [keys]
 // [keys]::{key:{}} => [{}]
-const toList = (keys, obj) => keys.map(k => obj[k]);
+export const toList = (keys, obj) => keys.map(k => obj[k]);
 
-const day = 3600 * 1000 * 24;
+export const day = 3600 * 1000 * 24;
 
+export const now = () => (new Date()).getTime();
 export const today = () => (new Date()).setHours(0, 0, 0, 0);
-export const yesterday = () => today() - day;
-export const week = () => today() - 7 * day;
+export const yesterday = (t = today()) => t - day;
+export const week = (t = today()) => t - 7 * day;
 
-const sum = (a, b) => a + b.amount;
+export const sum = (a, b) => a + b.amount;
 
-const filterTime = (from, to) => (l) =>
-  l.time > from && l.time < to;
+export const filterTime = (from, to) => (l) =>
+  l.time >= from && l.time <= to;
+
 
 export const getTimeToday = (logsEntities, track) => {
   return Object.keys(logsEntities)
@@ -37,7 +39,7 @@ export const dataForTrack = (id) => (state) => {
       logs,
       today: t,
       yesterday: logs.filter(filterTime(yesterday(), today())).reduce(sum, 0),
-      week: logs.filter(filterTime(week(), today())).reduce(sum, 0)
+      week: logs.filter(filterTime(week(), now())).reduce(sum, 0)
     });
 
 };

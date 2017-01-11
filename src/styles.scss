@@ -51,7 +51,7 @@ app-fab {
 
 .wrap {
   width: 100%;
-  height: 90%;
+  height: calc(100% - 130px);
   overflow: scroll;
   margin-top: -40px;
   perspective: 1500px;
@@ -226,4 +226,28 @@ h3.card_title {
   top: 75px;
   left: 0px;
   font-size: 0.8em;
+}
+
+
+.stats {
+  p {
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+
+    span {
+      position: absolute;
+      right: 0px;
+      color: $black;
+      font-weight: bold;
+    }
+
+  }
+}
+
+.table {
+  h3 {
+    text-align: center;
+    color: $black;
+  }
+  min-height: auto;
 }

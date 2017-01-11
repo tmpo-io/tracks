@@ -1,7 +1,6 @@
 0.0.0.0:4200
 gzip
 
-tls self_signed
 
 rewrite {
     if {file} not favicon.ico

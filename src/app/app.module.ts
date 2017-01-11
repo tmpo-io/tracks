@@ -9,6 +9,7 @@ import { TracksStoreModule } from './store/store.module';
 // import { UIModule } from './ui/ui.module';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from './router';
+import { SWModule } from './sw';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
     TracksStoreModule,
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     PagesModule,
-    RouterModule
+    RouterModule,
+    SWModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ import * as actions from './store/actions';
 import { dataForTrack, getTimeToday } from './store/selectors';
 
 import { RouterService } from './router';
+import { SWService } from './sw';
 
 @Component({
   selector: 'app-root',
@@ -24,9 +25,12 @@ export class AppComponent implements OnInit {
   path: string = '';
 
   constructor(public store: Store<State>,
-    public router: RouterService) {
+    public router: RouterService,
+    private worker: SWService) {
 
     store.dispatch({ type: actions.LOAD_STORE });
+    // Handles connection logic for service worker..
+    this.worker.connect();
 
   }
 
@@ -46,7 +50,6 @@ export class AppComponent implements OnInit {
       .select('router')
       .map((s: any) => s.route)
       .subscribe((p) => {
-        console.log('path', p);
         this.path = p;
       });
 
