@@ -14,7 +14,6 @@ export class SWService {
   constructor(private store: Store<any>) {}
 
   connect() {
-    console.log('booting version', environment.version);
     // @todo SSR valid code...
     window.sworker
       .then((r) => this.resolve(r))
@@ -24,11 +23,9 @@ export class SWService {
   }
 
   resolve(reg) {
-    console.log('called from service worker', this, reg);
     reg.onupdatefound = () => {
       let installingWorker = reg.installing;
       installingWorker.onstatechange = () => {
-        console.log('this get called?');
         this.store.dispatch(actions.swStatus(installingWorker.state));
       };
     };

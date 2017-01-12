@@ -1,3 +1,11 @@
+<div
+  class="modal"
+  *ngIf="(sworker$ | async) === 'activated'">
+  <div class="reload-app">
+    <p>There is a new version of the app</p>
+    <button (click)="reload()">Get it!</button>
+  </div>
+</div>
 
 <app-page-home *ngIf="path==''"
   data-if="route == ''"
@@ -6,3 +14,5 @@
 <app-page-track
   *ngIf="path.startsWith('/track/')"
   [track]="track$ | async"></app-page-track>
+
+

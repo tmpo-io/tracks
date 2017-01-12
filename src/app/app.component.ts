@@ -12,6 +12,8 @@ import { dataForTrack, getTimeToday } from './store/selectors';
 import { RouterService } from './router';
 import { SWService } from './sw';
 
+declare var window: Window;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,10 +24,11 @@ export class AppComponent implements OnInit {
 
   tracks$: Observable<Track[]>;
   track$: Observable<Track>;
+  sworker$: Observable<string>;
 
   path: string = '';
 
-  constructor(public store: Store<State>,
+  constructor(public store: Store<any>,
     public router: RouterService,
     private worker: SWService) {
 
@@ -64,8 +67,16 @@ export class AppComponent implements OnInit {
 
       });
 
+    this.sworker$ = this.store
+      .select(state => state.sw)
+      .map(s => s.status);
+
+
   }
 
+  reload() {
+    window.location.reload();
+  }
 
   // // RouteService.change.
   //     .subscribe(route => {

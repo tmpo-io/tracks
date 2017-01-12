@@ -251,3 +251,49 @@ h3.card_title {
   }
   min-height: auto;
 }
+
+
+.reload-app {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: $black;
+  color: #fff;
+  padding: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  border-radius: 15px;
+
+  button {
+    padding: 8px 15px 8px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+}
+
+.modal {
+
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: $black;
+    opacity: 0.4;
+  }
+
+}
