@@ -7,11 +7,13 @@
   </div>
 </div>
 
-<app-page-home *ngIf="path==''"
+<app-page-home *ngIf="path==''" [@in]
+  class="view"
   data-if="route == ''"
   [tracks]="tracks$ | async"></app-page-home>
 
-<app-page-track
+<app-page-track [@in2]
+  class="view"
   *ngIf="path.startsWith('/track/')"
   [track]="track$ | async"></app-page-track>
 

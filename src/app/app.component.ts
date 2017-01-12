@@ -1,11 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { state, style, transition, animate, trigger } from '@angular/core';
 
-import { State } from './store/model';
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Track } from './store/model';
+import { State, Track } from './store/model';
+
 import * as actions from './store/actions';
 import { dataForTrack, getTimeToday } from './store/selectors';
 
@@ -18,7 +20,29 @@ declare var window: Window;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('in', [
+      state('*', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('void', style({
+        transform: 'translate3d(-100%, 0, 0)'
+      })),
+      transition('* => void', animate('0.3s ease-out')),
+      transition('void => *', animate('0.3s ease-out')),
+    ]),
+    trigger('in2', [
+      state('*', style({
+        transform: 'translate3d(0, 0, 0)'
+      })),
+      state('void', style({
+        transform: 'translate3d(100%, 0, 0)'
+      })),
+      transition('* => void', animate('0.3s ease-out')),
+      transition('void => *', animate('0.3s ease-out')),
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
 
