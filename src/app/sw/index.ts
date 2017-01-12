@@ -11,10 +11,13 @@ declare var window;
 @Injectable()
 export class SWService {
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<any>) { }
 
   connect() {
     // @todo SSR valid code...
+    if (!window || !('sworker' in window)) {
+      return;
+    }
     window.sworker
       .then((r) => this.resolve(r))
       .catch((e) => {
@@ -37,4 +40,4 @@ export class SWService {
 @NgModule({
   providers: [SWService]
 })
-export class SWModule {}
+export class SWModule { }
