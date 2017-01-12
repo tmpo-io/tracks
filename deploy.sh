@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 ng build --aot --prod
 npm run sw
