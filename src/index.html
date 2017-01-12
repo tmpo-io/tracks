@@ -15,8 +15,7 @@
   <app-root>Loading...</app-root>
 <script>
   // && location.host.indexOf('localhost') === -1
-  if ('serviceWorker' in navigator
-    ) {
+  if ('serviceWorker' in navigator) {
     window.sworker = navigator.serviceWorker.register('/service-worker.js')
   }
 </script>
