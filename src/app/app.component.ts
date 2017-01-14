@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+
 
 import { State, Track } from './store/model';
 
@@ -71,6 +73,7 @@ export class AppComponent implements OnInit {
         .map(obj => Object.assign({}, obj, {
           today: getTimeToday(state.logsEntities, obj)
         }))
+        // .sort((a, b) => a.lastRecord - b.lastRecord)
         .reverse()
       );
 
@@ -83,13 +86,12 @@ export class AppComponent implements OnInit {
 
     this.track$ = this.store
       .select((state: any) => state.router)
-      .switchMap(route => {
-        let id = route.route.replace('/track/', '');
-        return this.store
-          .select((s: any) => s.data)
-          .map(dataForTrack(id));
-
-      });
+      .map(route => route.route.replace('/track/', ''))
+      .filter(id => id !== '')
+      .switchMap(id => this.store
+            .select((s: any) => s.data)
+            .map(dataForTrack(id))
+      );
 
     this.sworker$ = this.store
       .select(state => state.sw)

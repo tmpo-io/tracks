@@ -26,6 +26,12 @@
     <p>WEEK <span>{{ track.week | timesince }}</span></p>
   </div>
 
+  <div class="stats card" *ngIf="track">
+  <app-track-stats
+    [track]="track"
+    [stats]="track.weekStats"></app-track-stats>
+  </div>
+
   <div class="stats card table" *ngIf="track.kind == 'time'">
     <h3>Latest 10 entries</h3>
     <p *ngFor="let item of table; trackBy:trackFunc">

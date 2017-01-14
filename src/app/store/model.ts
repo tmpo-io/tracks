@@ -13,6 +13,7 @@ export class Track {
   today?: number;
   yesterday?: number;
   week?: number;
+  weekStats?: any[];
   logs?: TrackLog[];
 }
 

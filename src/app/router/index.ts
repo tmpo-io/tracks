@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Store } from '@ngrx/store';
@@ -32,14 +32,18 @@ export class RouterService {
 
 
 }
+export const PROVIDERS = [
+    RouterService,
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+  ];
 
 
 @NgModule({
   imports: [CommonModule],
-  providers: [
-    RouterService,
-    Location,
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
-  ]
+  providers: PROVIDERS
 })
-export class RouterModule { }
+export class RouterModule {
+
+
+}

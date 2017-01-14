@@ -1,3 +1,5 @@
+import { range } from './utils';
+
 
 // flattens a {key:{}} to a [{}] given a sorted [keys]
 // [keys]::{key:{}} => [{}]
@@ -14,6 +16,32 @@ export const sum = (a, b) => a + b.amount;
 
 export const filterTime = (from, to) => (l) =>
   l.time >= from && l.time <= to;
+
+
+// returns the unix time at 00:00:00 for a given time
+export const calcDay = (val) => (new Date(val)).setHours(0, 0, 0, 0);
+
+// @returns amount time grouped by day
+const amountByDay = list => {
+  const first = calcDay(list[0].time);
+  const last = calcDay(list[list.length - 1].time);
+  // we want to fill day by day..
+  const days = range(last, first + day, day).reduce((o, b) => {
+      o[b] = 0;
+      return o;
+      }, {});
+
+  return list.reduce((acc, el) => {
+    let d = calcDay(el.time);
+    acc[d] = acc[d] + el.amount;
+    return acc;
+  }, days);
+
+};
+
+//
+const toArray = (obj) => Object.keys(obj)
+  .map(k => ({day: k, value: obj[k]}));
 
 
 export const getTimeToday = (logsEntities, track) => {
@@ -38,6 +66,7 @@ export const dataForTrack = (id) => (state) => {
     .assign({}, state.tracksEntities[id], {
       logs,
       today: t,
+      weekStats: toArray(amountByDay(logs)),
       yesterday: logs.filter(filterTime(yesterday(), today())).reduce(sum, 0),
       week: logs.filter(filterTime(week(), now())).reduce(sum, 0)
     });
@@ -45,6 +74,31 @@ export const dataForTrack = (id) => (state) => {
 };
 
 
+
+
 const trace = (l) => {
   console.log('[trace]', l); return l;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
