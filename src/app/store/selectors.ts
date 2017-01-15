@@ -23,6 +23,9 @@ export const calcDay = (val) => (new Date(val)).setHours(0, 0, 0, 0);
 
 // @returns amount time grouped by day
 const amountByDay = list => {
+  if (list.length === 0) {
+    return [];
+  }
   const first = calcDay(list[0].time);
   const last = calcDay(list[list.length - 1].time);
   // we want to fill day by day..
