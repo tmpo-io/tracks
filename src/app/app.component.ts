@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { state, style, transition, animate, trigger } from '@angular/core';
 
 import { Store } from '@ngrx/store';
@@ -11,6 +11,8 @@ import 'rxjs/add/operator/filter';
 import { State, Track } from './store/model';
 
 import * as actions from './store/actions';
+import * as ractions from './router/actions';
+
 import { dataForTrack, getTimeToday } from './store/selectors';
 
 import { RouterService } from './router';
@@ -56,15 +58,22 @@ export class AppComponent implements OnInit {
 
   constructor(public store: Store<any>,
     public router: RouterService,
-    private worker: SWService) {
+    private worker: SWService,
+    private cd:ChangeDetectorRef) {
 
     store.dispatch({ type: actions.LOAD_STORE });
     // Handles connection logic for service worker..
     this.worker.connect();
-
   }
 
   ngOnInit() {
+
+    // handle route events
+    this.router.location.subscribe(e => {
+      this.store.dispatch(ractions.goto(e.url));
+      this.cd.markForCheck();
+    });
+
 
     this.tracks$ = this.store
       .select('data')
