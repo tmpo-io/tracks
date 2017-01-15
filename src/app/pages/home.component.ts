@@ -7,11 +7,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { RouterService } from '../router';
-
 import { Track } from '../store/model';
 import * as actions from '../store/actions';
-
-declare var window: Window;
+import { WindowRef } from '../browser/';
 
 @Component({
   selector: 'app-page-home',
@@ -36,13 +34,14 @@ export class PageHomeComponent {
   showAdd: false;
 
   constructor(public store: Store<any>,
-    public router: RouterService) {
+    public router: RouterService,
+    private win: WindowRef) {
   }
 
   addTrack(event) {
     this.store.dispatch(actions.addTrack(event));
     this.showAdd = false;
-    window.scrollTo(0, 0);
+    this.win.nativeWindow.scrollTo(0, 0);
   }
 
   byObj(index, item) {

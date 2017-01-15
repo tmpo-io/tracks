@@ -9,6 +9,20 @@ if (environment.production) {
   enableProdMode();
 }
 
+// declare var System: any;
+// declare var hola: any;
+
+// System.import('app/test.js').then((m) => {
+//   m = require('app/test.js');
+//  console.log(m);
+//  hola();
+// });
+
+
+// declare var hola: any;
+
+
+
 platformBrowserDynamic().bootstrapModule(AppModule);
 
 

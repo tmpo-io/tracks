@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { ChangeDetectorRef, Injectable, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Store } from '@ngrx/store';
@@ -14,14 +14,9 @@ Lifted and ugly router module...
 @Injectable()
 export class RouterService {
 
-  constructor(
-    private location: Location,
-    public store: Store<any>) {
-    // console.log(location.path());
+  constructor(public location: Location,public store: Store<any>) {
+    // Initialize store state
     this.store.dispatch(actions.goto(location.path()));
-    this.location.subscribe(e => {
-      this.store.dispatch(actions.goto(e.url));
-    });
   }
 
 
@@ -32,14 +27,18 @@ export class RouterService {
 
 
 }
+export const PROVIDERS = [
+    RouterService,
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+  ];
 
 
 @NgModule({
   imports: [CommonModule],
-  providers: [
-    RouterService,
-    Location,
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
-  ]
+  providers: PROVIDERS
 })
-export class RouterModule { }
+export class RouterModule {
+
+
+}

@@ -11,6 +11,7 @@ import { AppTrackTimeComponent } from './tracktime.component';
 import { AppTrackCounterComponent } from './trackcounter.component';
 import { AppTrackClockComponent } from './trackclock.component';
 import { AppRecordButtonComponent } from './recordbtn.component';
+import { AppTrackStatsDayComponent } from './trackstatsday.component';
 import { TimeSincePipe } from './time.pipe';
 import { SwiperRightDirective } from './swiper.directive';
 
@@ -22,6 +23,7 @@ const COMPONENTS = [
     AppTrackTimeComponent,
     AppTrackClockComponent,
     AppRecordButtonComponent,
+    AppTrackStatsDayComponent,
     TimeSincePipe,
     SwiperRightDirective,
   ];

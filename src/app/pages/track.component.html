@@ -26,7 +26,14 @@
     <p>WEEK <span>{{ track.week | timesince }}</span></p>
   </div>
 
-  <div class="stats card table" *ngIf="track.kind == 'time'">
+  <div class="stats card" *ngIf="track && track.weekStats.length>0">
+  <app-track-stats
+    [track]="track"
+    [stats]="track.weekStats"></app-track-stats>
+  </div>
+
+  <div class="stats card table"
+    *ngIf="track.kind == 'time' && track.weekStats.length>0">
     <h3>Latest 10 entries</h3>
     <p *ngFor="let item of table; trackBy:trackFunc">
       {{ item.started | date:"y/M/d H:mm" }}
@@ -34,7 +41,8 @@
     </p>
   </div>
 
-  <div class="stats card table" *ngIf="track.kind == 'counter'">
+  <div class="stats card table"
+    *ngIf="track.kind == 'counter' && track.weekStats.length>0">
     <h3>Latest 10 entries</h3>
     <p *ngFor="let item of table; trackBy:trackFunc">
       {{ item.time | date:"y/M/d H:mm" }}

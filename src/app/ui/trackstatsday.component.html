@@ -1,0 +1,25 @@
+
+<svg widh="100%" height="100">
+
+<svg:g
+  *ngFor="let stat of stats; let i = index">
+  <svg:rect
+    width="30px"
+    [attr.height]="(stat.value/max)*100"
+    [attr.x]="i * 40"
+    [attr.y]="80 - (stat.value/max)*100"
+    fill="#225378" />
+    <svg:text y="0"
+      fill="#225378"
+      [attr.x]="(i * 40)"
+      [attr.y]="100"
+      >{{ stat.day | date:"EEE" }}</svg:text>
+    <svg:text y="0"
+      *ngIf="track.kind == 'counter'"
+      fill="#1695a3"
+      [attr.x]="(i * 40) + 1"
+      [attr.y]="70 - (stat.value/max)*100"
+      >{{ stat.value }}</svg:text>
+</svg:g>
+
+</svg>

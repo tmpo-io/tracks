@@ -40,7 +40,7 @@ describe('time functions', () => {
     let m = sel.now();
     let yes = sel.yesterday(m);
     expect(yes).toBe(m - 3600 * 1000 * 24);
-    expect(sel.week(m)).toBe( m - 7 * sel.day );
+    expect(sel.week(m)).toBe(m - 7 * sel.day);
   });
 });
 
@@ -57,4 +57,18 @@ describe('sum func', () => {
     expect(res).toBe(15);
 
   });
+});
+
+
+describe('function calcDay', () => {
+
+  it('given a timestamp return the 00:00:00', () => {
+
+    const d = new Date();
+    const t = d.getTime();
+    const expected = d.setHours(0, 0, 0, 0);
+    expect(sel.calcDay(t)).toBe(expected);
+
+  });
+
 });

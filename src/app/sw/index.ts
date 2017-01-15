@@ -4,21 +4,22 @@ import { Injectable, NgModule } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as actions from './actions';
 import { environment } from '../../environments/environment';
+import { WindowRef } from '../browser';
 
-
-declare var window;
 
 @Injectable()
 export class SWService {
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<any>, private win: WindowRef) { }
 
   connect() {
-    // @todo SSR valid code...
-    if (!window || !('sworker' in window)) {
+
+    let win = this.win.nativeWindow;
+
+    if (!win || !('sworker' in win)) {
       return;
     }
-    window.sworker
+    win.sworker
       .then((r) => this.resolve(r))
       .catch((e) => {
         console.error('Error during service worker registration:', e);
