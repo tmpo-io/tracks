@@ -9,16 +9,13 @@ import 'rxjs/add/operator/filter';
 
 
 import { State, Track } from './store/model';
-
 import * as actions from './store/actions';
 import * as ractions from './router/actions';
-
 import { dataForTrack, getTimeToday } from './store/selectors';
-
 import { RouterService } from './router';
 import { SWService } from './sw';
+import { WindowRef } from './browser';
 
-declare var window: Window;
 
 @Component({
   selector: 'app-root',
@@ -59,7 +56,8 @@ export class AppComponent implements OnInit {
   constructor(public store: Store<any>,
     public router: RouterService,
     private worker: SWService,
-    private cd:ChangeDetectorRef) {
+    private cd: ChangeDetectorRef,
+    private window: WindowRef) {
 
     store.dispatch({ type: actions.LOAD_STORE });
     // Handles connection logic for service worker..
@@ -110,7 +108,7 @@ export class AppComponent implements OnInit {
   }
 
   reload() {
-    window.location.reload();
+    this.window.nativeWindow.location.reload();
   }
 
   // // RouteService.change.

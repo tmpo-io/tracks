@@ -10,7 +10,6 @@ import * as actions from './actions';
 Lifted and ugly router module...
 */
 
-declare var Zone: any;
 
 @Injectable()
 export class RouterService {
