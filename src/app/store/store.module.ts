@@ -8,6 +8,7 @@ import { Storage } from './storage';
 
 import * as router from '../router/reducer';
 import { swreducer } from '../sw/reducer';
+import { reducerGDrive } from '../drive/reducers';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { swreducer } from '../sw/reducer';
       data: reducerTracks,
       router: router.reducer,
       sw: swreducer,
+      gdrive: reducerGDrive,
     }),
     EffectsModule.run(Storage)
   ]

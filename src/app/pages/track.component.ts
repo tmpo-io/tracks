@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Track } from '../store/model';
 import { RouterService } from '../router';
 import * as actions from '../store/actions';
+import { AppState as GAuth } from '../drive/reducers';
 
 @Component({
   selector: 'app-page-track',
@@ -14,6 +15,7 @@ export class PageTrackComponent {
 
   page: number;
 
+  @Input() gauth: GAuth;
   @Input() set track(track: Track) {
     this._track = track;
   }

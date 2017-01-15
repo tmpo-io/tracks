@@ -254,6 +254,19 @@ h3.card_title {
   }
 }
 
+.center {
+  text-align: center;
+}
+
+.card button {
+  margin-top: 15px;
+  font-size: 1.1em;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: $initial;
+  color: $white;
+}
+
 .table {
   h3 {
     text-align: center;

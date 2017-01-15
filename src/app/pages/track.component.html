@@ -32,6 +32,13 @@
     [stats]="track.weekStats"></app-track-stats>
   </div>
 
+  <div class="stats card center" *ngIf="track.weekStats.length>0">
+    <h3>Export this track to Google Sheets</h3>
+    <button *ngIf="gauth.authState == 'success'">Export</button>
+    <button *ngIf="gauth.authState == 'notlogged'">Login</button>
+
+  </div>
+
   <div class="stats card table"
     *ngIf="track.kind == 'time' && track.weekStats.length>0">
     <h3>Latest 10 entries</h3>

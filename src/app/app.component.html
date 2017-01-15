@@ -15,6 +15,7 @@
 <app-page-track [@in2]
   class="view"
   *ngIf="path.startsWith('/track/')"
+  [gauth]="gauth$ | async"
   [track]="track$ | async"></app-page-track>
 
 

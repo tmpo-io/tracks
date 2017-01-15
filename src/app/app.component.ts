@@ -15,7 +15,8 @@ import { dataForTrack, getTimeToday } from './store/selectors';
 import { RouterService } from './router';
 import { SWService } from './sw';
 import { WindowRef } from './browser';
-
+import { GoogleSheet } from './drive';
+import { AppState as AuthState } from './drive/reducers';
 
 @Component({
   selector: 'app-root',
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit {
   tracks$: Observable<Track[]>;
   track$: Observable<Track>;
   sworker$: Observable<string>;
+  gauth$: Observable<AuthState>;
 
   path: string = '';
 
@@ -57,7 +59,8 @@ export class AppComponent implements OnInit {
     public router: RouterService,
     private worker: SWService,
     private cd: ChangeDetectorRef,
-    private window: WindowRef) {
+    private window: WindowRef,
+    private sheet: GoogleSheet) {
 
     store.dispatch({ type: actions.LOAD_STORE });
     // Handles connection logic for service worker..
@@ -103,6 +106,10 @@ export class AppComponent implements OnInit {
     this.sworker$ = this.store
       .select(state => state.sw)
       .map(s => s.status);
+
+    this.gauth$ = this.store
+      .select(state => state.gdrive);
+
 
 
   }
