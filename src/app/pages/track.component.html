@@ -34,8 +34,10 @@
 
   <div class="stats card center" *ngIf="track.weekStats.length>0">
     <h3>Export this track to Google Sheets</h3>
-    <button *ngIf="gauth.authState == 'success'">Export</button>
-    <button *ngIf="gauth.authState == 'notlogged'">Login</button>
+    <button *ngIf="gauth.authState == 'success'"
+      (click)="handleExport(track.id)">Export</button>
+    <button *ngIf="gauth.authState == 'notlogged'"
+      (click)="handleLogin()">Login</button>
 
   </div>
 

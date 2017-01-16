@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { Track } from '../store/model';
 import { RouterService } from '../router';
 import * as actions from '../store/actions';
+import * as dactions from '../drive/actions';
+
 import { AppState as GAuth } from '../drive/reducers';
 
 @Component({
@@ -63,6 +65,10 @@ export class PageTrackComponent {
   delete(id) {
     this.router.go('');
     this.store.dispatch(actions.trackDelete(id));
+  }
+
+  handleLogin($event) {
+    this.store.dispatch(dactions.gapiLogin());
   }
 
 }
