@@ -14,7 +14,9 @@ export default {
   context: 'window',
   moduleName: 'tocu',
   plugins: [
-    babel(),
+    babel(
+      {presets: 'es2015-rollup'}
+    ),
     nodeResolve({ jsnext: true, module: true, browser: true, main:true, extensions:['.js'] }),
     commonjs({
       ignoreGlobal: false,
