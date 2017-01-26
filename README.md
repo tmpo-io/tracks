@@ -17,17 +17,18 @@ https://tracks.tmpo.io
 - Use of Observables for interactive elements.
 - [🔥 A swipe implementation ala Cycle (Using observable streams)](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/swiper.directive.ts)
 - Uses service worker from google-chrome.
-- An example on howto build it with rollup (30% reduction in size than with cli). Check devel branch. There is a makefile that should do the job.
+- [🌴 An example on howto build it with rollup](https://github.com/tmpo-io/tracks/blob/7690a3c7e2f04ae6ddd326393de1626bca23a401/Makefile) (30% reduction in size than with cli). Check devel branch. There is a makefile that should do the job.
 - Still not optimized for desktop browsers
 
 ## 🔨 Some other perhaps interesting snippets you can find on de codebase:
 
-- [Apply animations to host components](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/addtrack.component.ts#L33)
-- [Acces nativeElement (the DOM object)](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/addtrack.component.ts#L31)
+- [🏎 Apply animations to host components](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/addtrack.component.ts#L33)
+- [🔺 Acces nativeElement (the DOM object)](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/addtrack.component.ts#L31)
 - [📦 All App state is managed throught ngrx (also routing)](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/app.component.ts#L73) 
    This exploits the fact that Observable streams are lazy. Each data stream is builded declararively, with small functions. Component subscription is managed with the *async pipe*
-- [An example on how declaratively build the data stream allows to test the important parts.](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/store/selectors.spec.ts)
+- [✈️ An example on how declaratively build the data stream allows to test the important parts.](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/store/selectors.spec.ts)
 - [⌚️ A timer like clock builded with an Observable Stream](https://github.com/tmpo-io/tracks/blob/8838a3f03b9a808804a5fa33bfa19a06561c9127/src/app/ui/trackclock.component.ts) Also interesting on the example the use of a seter, to change the component behaviour. 
+- [👏 An example of implementations of authoritzation with google client](https://github.com/tmpo-io/tracks/blob/7690a3c7e2f04ae6ddd326393de1626bca23a401/src/app/drive/index.ts) The idea is to let export your tracks to google Drive.
 
 ## ✂️ Things I had done to optimize file size:
 
