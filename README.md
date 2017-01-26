@@ -1,4 +1,4 @@
-# ⏰ Tracks ⏰
+# ⏰ Tracks
 
 🚜 WIP Angular 2 Progressive Web App. __lot's of snipets with love_
 
