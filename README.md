@@ -1,6 +1,12 @@
 # Tracks
 
-<img src="https://raw.githubusercontent.com/jordic/tracks_preact/master/screenshot/screenshot.png" width="300" />
+WIP Angular 2 Progressive Web App.
+
+A working progress version of the app can be seen and installed here: (Do it from a mobile browser) 
+At least chrome with mobile preview.
+
+https://tracks.tmpo.io
+
 
 ## Whats on?
 
@@ -30,9 +36,10 @@
 - I'm also not using forms, neither http for the same reason.
 - Tryied to provide my own implementation of Commons (because I'm only using two directives and one filter), but it's almost impossible to get rid of it, without making ugly hacks.
 
+## I'm also porting the app to preact, to see diferences on both frameworks:
 
-WIP Angular 2 Progressive Web App.
+You can track the progress here [github.com/jordic/tracks_preact](https://github.com/jordic/tracks_preact)
 
-A working progress of the app can be seen here:
+<img src="https://raw.githubusercontent.com/jordic/tracks_preact/master/screenshot/screenshot.png" width="300" />
 
-https://tracks.tmpo.io
+
