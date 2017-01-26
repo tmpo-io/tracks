@@ -1,11 +1,11 @@
-# ⏰⏰ Tracks ⏰⏰
+# ⏰ Tracks ⏰
 
-🚜 WIP Angular 2 Progressive Web App.
+🚜 WIP Angular 2 Progressive Web App. __lot's of snipets with love_
 
 Master branch is published here.
 https://tracks.tmpo.io
 
-⌨⌨ **Also if you found this repo interesting, and are you looking for someone that can help yours build better frontend projects. We are available for hire!** ⌨⌨ 
+⌨⌨ **<span color="red">Also if you found this repo interesting, and you are looking for someone that can help you build better frontend projects. We are available for hire! </span>** ⌨⌨ 
 
 
 ## 📺 Whats on?
@@ -35,7 +35,12 @@ https://tracks.tmpo.io
 - I'm also not using forms, neither http for the same reason.
 - Tryied to provide my own implementation of Commons (because I'm only using two directives and one filter), but it's almost impossible to get rid of it, without making ugly hacks.
 
-## I'm also porting the app to preact, to see diferences on both frameworks:
+
+## Contributing
+✨ If you like the app or you would like to contribute in something, feel free to send us a PR. Will make us so happy.... ✨
+
+## Ports:
+I'm also porting the app to *p*react to see the main differences on the process
 
 🛠<br />
 You can track the progress here<br/>[github.com/jordic/tracks_preact](https://github.com/jordic/tracks_preact)
@@ -44,5 +49,5 @@ You can track the progress here<br/>[github.com/jordic/tracks_preact](https://gi
 <img src="https://raw.githubusercontent.com/jordic/tracks_preact/master/screenshot/screenshot.png" width="300" />
 
 
-**Build with ::heart:: by [TMPO.io](https://tmpo.io)**
+**Build with :heart: by [TMPO.io](https://tmpo.io)**
 
